@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="blue">#3599CD</color>
+    <color name="dark_blue">#2B347F</color>
+    <color name="light_green">#03705F</color>
+    <color name="maroon">#990002</color>
+    <color name="sky_blue">	#87CEEB</color>
+    <color name="steel_blue">#4682B4</color>
+    <color name="lightsteelblue">#B0C4DE</color>
+    <color name="dodgerblue">#1E90FF</color>
+    <color name="toolbar">#990000</color>
+    <color name="theme_color">#81A4CD</color>
+    <color name="statusbar">#4c0000 </color>
+</resources>
