@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:padding="5dp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/helpline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/helpline1"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Thefts, harassment, pick pocketing or other criminal incidents on rail premises."
+                android:textSize="16sp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/helpline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/helpline2"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Catering services (Overcharging, Food Price, Less Quality etc) onIndian Railways. "
+                android:textSize="16sp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/helpline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/helpline3"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Cleanliness, food and catering, coach maintenance, medical emergency, linen etc."
+                android:textSize="16sp"/>
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/helpline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/helpline4"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="For PNR enquiry, Accommodation availability, Fare enquiry, Current train running position(Chargable)"
+                android:textSize="16sp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/helpline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/helpline5"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="For Clean My Coach , SMS Clean space PNR to 58888"
+                android:textSize="16sp"/>
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/helpline6"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="You can Tweet to Direct Rail Ministry for Any kind of Journey Relevant complaint like Safety,Police,Medical Electricity,Corruption, Safety, Over Prices, Bed Food etc.\n@RailMin through Tweeter Account"
+                android:textSize="16sp"/>
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>

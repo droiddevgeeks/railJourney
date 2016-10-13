@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rlCancelTrain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rlFromToStation"
+            android:layout_width="match_parent"
+            android:layout_height="36dp">
+
+            <TextView
+                android:id="@+id/txtSourceStation"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:text="Lucknow"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/txtDestinationStation"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="Mumbai"
+                android:textSize="20sp"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_toLeftOf="@+id/txtDestinationStation"
+                android:layout_toRightOf="@+id/txtSourceStation">
+
+                <ImageView
+                    android:id="@+id/imgEngine"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/engine"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/imgEngine"
+                    android:src="@drawable/right_arrow"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlTrainName"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@+id/rlFromToStation">
+
+            <TextView
+                android:id="@+id/txtTrainName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:text="Train Name"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/txtTrainNameValue"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="Pushpak"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlTrainTime"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@+id/rlTrainName">
+
+            <TextView
+                android:id="@+id/txtTrainTime"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:text="Departure Time"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/txtTrainTimeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="7:20 PM"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
