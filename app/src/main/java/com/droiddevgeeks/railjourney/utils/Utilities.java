@@ -1,7 +1,11 @@
 package com.droiddevgeeks.railjourney.utils;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.Window;
 import android.view.WindowManager;
 
 /**
@@ -24,4 +28,7 @@ public class Utilities
         windowManager.getDefaultDisplay().getMetrics(displaymetrics);
         return displaymetrics.heightPixels;
     }
+
+
+
 }

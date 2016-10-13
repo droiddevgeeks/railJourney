@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--android:background="@drawable/listview_row_background">-->
+
+    <TextView
+        android:id="@+id/txtPassengerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Passenger no:"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/txtPassengerNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:layout_toRightOf="@id/txtPassengerTitle"
+        android:textSize="16sp"
+        android:layout_margin="5dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/txtPassengerTitle"
+        android:background="@android:color/black"
+        />
+
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_below="@+id/txtPassengerNumber"
+     android:layout_margin="5dp"
+     >
+     <RelativeLayout
+         android:id="@+id/rlCoachInfo"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentEnd="true"
+         android:layout_alignParentRight="true"
+         >
+         <TextView
+             android:id="@+id/txtCoachTitle"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Coach no:"
+             android:textStyle="bold"
+             android:textSize="18sp"
+             />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="1"
+             android:layout_below="@+id/txtCoachTitle"
+             android:layout_centerHorizontal="true"
+             android:layout_marginTop="10dp"
+             android:textSize="16sp"
+             android:textStyle="italic"
+             />
+     </RelativeLayout>
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+         <com.droiddevgeeks.railjourney.utils.CustomTextView
+         android:id="@+id/txtCurrentBookingTitle"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Current status:"
+         android:textStyle="bold"
+         android:textSize="18sp"
+         android:layout_marginBottom="10dp"
+         />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_toRightOf="@+id/txtCurrentBookingTitle"
+             android:text="S7,58,GN"
+             android:layout_marginLeft="5dp"
+             android:textSize="16sp"
+             android:textStyle="italic"
+             />
+         <TextView
+             android:id="@+id/txtBookngStatus"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Booking status:"
+             android:textStyle="bold"
+             android:textSize="18sp"
+             android:layout_below="@id/txtCurrentBookingTitle"
+             />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_toRightOf="@+id/txtBookngStatus"
+             android:layout_below="@id/txtCurrentBookingTitle"
+             android:text="S7,58"
+             android:layout_marginLeft="5dp"
+             android:textSize="16sp"
+             />
+     </RelativeLayout>
+ </RelativeLayout>
+
+</RelativeLayout>

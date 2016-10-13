@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">railJourney</string>
+    <string name="about">About Us</string>
+    <string name="close_popup">Close</string>
+
+    <string name="about_us">railJourney provides you a easy way to access all information about Indian Railway.
+       \n\nPlease send us your suggestion on how to improve our services.
+        \nGet in touch with us at \n\ndroiddevgeeks@gmail.com</string>
+
+    <!--helpline number-->
+
+    <string name="helpline1"><u><a>1800-111-322</a> </u></string>
+    <string name="helpline2"><u><a>1800-111-139</a></u></string>
+    <string name="helpline3"><u><a>138</a></u></string>
+    <string name="helpline4"><u><a>139</a></u></string>
+    <string name="helpline5"><u><a>58888</a></u></string>
+    <string name="helpline6"><u>Tweeter</u></string>
+
+
+    <!--navigation drawer-->
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+
+    <string name="travel_class">Select Class</string>
+    <string-array name="travel_class_array">
+        <item>AC Chair Car</item>
+        <item>First AC</item>
+        <item>Second AC</item>
+        <item>Third AC</item>
+        <item>3AC Economy</item>
+        <item>Sleeper Class</item>
+        <item>First Class</item>
+        <item>2nd Seating</item>
+    </string-array>
+
+    <string name="traveller_age">Select age</string>
+    <string-array name="traveller_age_array">
+        <item>Child(5 to 11)</item>
+        <item>Adult ( 12 and above)</item>
+        <item>Senior Citizen Female( 58 and above)</item>
+        <item>Senior Citizen Female( 60 and above)</item>
+    </string-array>
+
+    <string name="booking_quota">Quota</string>
+    <string-array name="booking_quota_array">
+        <item>General</item>
+        <item>Tatkal</item>
+        <item>Premium Tatkal</item>
+    </string-array>
 </resources>

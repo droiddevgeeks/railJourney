@@ -9,12 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.droiddevgeeks.railjourney.ImplementationClass;
 import com.droiddevgeeks.railjourney.R;
 import com.droiddevgeeks.railjourney.adapters.HomeScreenAdapter;
+import com.droiddevgeeks.railjourney.canceltrain.CancelTrainFragment;
+import com.droiddevgeeks.railjourney.fareenquiry.FareEnquiryFragment;
 import com.droiddevgeeks.railjourney.models.SectionVO;
+import com.droiddevgeeks.railjourney.pnr.PNRCheckFragment;
 import com.droiddevgeeks.railjourney.utils.Utilities;
 
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by kunal.sale on 10/4/2016.
  */
-public class HomeScreenFragment extends Fragment
+public class HomeScreenFragment extends Fragment implements AdapterView.OnItemClickListener
 {
     @Nullable
     @Override
@@ -51,6 +55,8 @@ public class HomeScreenFragment extends Fragment
         GridView homeScreenGridView = (GridView)view.findViewById( R.id.gridViewHomeScreen);
         HomeScreenAdapter homeScreenAdapter = new HomeScreenAdapter( getContext(), R.layout.grid_child_layout, getSectionArrayList(), width, height, new ImplementationClass());
         homeScreenGridView.setAdapter(homeScreenAdapter);
+
+        homeScreenGridView.setOnItemClickListener(this);
     }
 
     private ArrayList<SectionVO> getSectionArrayList()
@@ -65,5 +71,22 @@ public class HomeScreenFragment extends Fragment
         sectionArrayList.add( new SectionVO( R.drawable.cancelled, "Cancelled Train"));
         sectionArrayList.add( new SectionVO( R.drawable.station, "Train At Station"));
         return sectionArrayList;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        switch (position)
+        {
+            case 0 :
+                getFragmentManager().beginTransaction().replace(R.id.container, new PNRCheckFragment()).addToBackStack(null).commit();
+                break;
+            case 2 :
+                getFragmentManager().beginTransaction().replace(R.id.container, new FareEnquiryFragment()).addToBackStack(null).commit();
+                break;
+            case 6 :
+                getFragmentManager().beginTransaction().replace(R.id.container, new CancelTrainFragment()).addToBackStack(null).commit();
+
+        }
     }
 }
