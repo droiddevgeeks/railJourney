@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:id="@+id/llTrainName"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtTrainName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="Train No/Name"
+                android:textColor="@android:color/black"/>
+
+            <FrameLayout
+                android:id="@+id/frameEditBoxTrain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/txtTrainName"
+                android:layout_weight=".3">
+
+                <EditText
+                    android:id="@+id/edtTrainName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/section_background"
+                    android:hint="enter train no or name"
+                    android:padding="5dp"
+                    android:singleLine="true"/>
+
+                <ImageView
+                    android:id="@+id/imgClearTrain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="right|end|center_vertical"
+                    android:paddingEnd="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:src="@drawable/cross"
+                    android:visibility="visible"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSourceTrain"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@id/llTrainName"
+            android:layout_marginTop="2dp"
+            android:weightSum="1">
+
+
+            <TextView
+                android:id="@+id/txtFromStation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="Source:"
+                android:textColor="@android:color/black"/>
+
+            <FrameLayout
+                android:id="@+id/frameEditBoxSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/txtFromStation"
+                android:layout_weight=".3">
+
+                <EditText
+                    android:id="@+id/edtFromStation"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/txtFromStation"
+                    android:background="@drawable/section_background"
+                    android:hint="station name or code"
+                    android:padding="5dp"
+                    android:singleLine="true"/>
+
+                <ImageView
+                    android:id="@+id/imgClearSource"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="right|end|center_vertical"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:src="@drawable/cross"
+                    android:visibility="visible"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDestinationTrain"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@+id/llSourceTrain"
+            android:layout_marginTop="2dp"
+            android:weightSum="1">
+
+
+            <TextView
+                android:id="@+id/txtToStation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="Destination:"
+                android:textColor="@android:color/black"/>
+
+            <FrameLayout
+                android:id="@+id/frameEditBoxDestination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/txtToStation"
+                android:layout_weight=".3">
+
+                <EditText
+                    android:id="@+id/edtToStation"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/txtToStation"
+                    android:background="@drawable/section_background"
+                    android:hint="station name or code"
+                    android:padding="5dp"
+                    android:singleLine="true"/>
+
+                <ImageView
+                    android:id="@+id/imgClearDestination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="right|end|center_vertical"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:src="@drawable/cross"
+                    android:visibility="visible"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDateOfJourney"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@+id/llDestinationTrain"
+            android:layout_marginTop="2dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtDOJ"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="DOJ:"
+                android:textColor="@android:color/black"/>
+
+            <FrameLayout
+                android:id="@+id/frameEditBoxDOJ"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/txtDOJ"
+                android:layout_weight=".3">
+
+                <TextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/section_background"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="Date of Journey"
+                    android:textColor="@android:color/black"/>
+
+                <ImageView
+                    android:id="@+id/txtDateIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|end|center_vertical"
+                    android:layout_toRightOf="@+id/txtDate"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:src="@drawable/calendar"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llTravelClass"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@+id/llDateOfJourney"
+            android:weightSum="1">
+
+
+            <TextView
+                android:id="@+id/txtTravelClass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="Travel Class:"
+                android:textColor="@android:color/black"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight=".3">
+
+                <Spinner
+                    android:id="@+id/spinnerTravelClass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:entries="@array/travel_class_array"
+                    android:prompt="@string/travel_class"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llPassengerAge"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@+id/llTravelClass"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtPassengerAge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="Age:"
+                android:textColor="@android:color/black"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight=".3">
+
+                <Spinner
+                    android:id="@+id/spinnerPassengerAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:entries="@array/traveller_age_array"
+                    android:prompt="@string/traveller_age"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llBookingQuota"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@+id/llPassengerAge"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtBookingQuota"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="Booking Quota:"
+                android:textColor="@android:color/black"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight=".3">
+
+                <Spinner
+                    android:id="@+id/spinnerBookingQuota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:entries="@array/booking_quota_array"
+                    android:prompt="@string/booking_quota"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/txtGetFare"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llBookingQuota"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Get Fare"
+            android:textColor="@android:color/black"/>
+    </RelativeLayout>
+</RelativeLayout>
