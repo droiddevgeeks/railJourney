@@ -48,4 +48,17 @@
         <item>Tatkal</item>
         <item>Premium Tatkal</item>
     </string-array>
+
+
+    <!--fare string-->
+    <string name="fare_train_name_number">Train No/Name</string>
+    <string name="fare_source">Source:</string>
+    <string name="fare_destination">Destination:</string>
+    <string name="fare_station_name_code">name or code</string>
+    <string name="fare_DOJ">DOJ:</string>
+    <string name="fare_date_of_journey">dd-mm-yyyy</string>
+    <string name="fare_get_fare">Get Fare</string>
+    <string name="fare_travel_class">Class:</string>
+    <string name="fare_age">Age:</string>
+    <string name="fare_booking_quota">Quota:</string>
 </resources>

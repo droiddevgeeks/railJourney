@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/background_light_white">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="5dp">
 
             <TextView
                 android:id="@+id/txtTrainRouteHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/darker_gray"
+                android:background="@color/steel_blue"
                 android:padding="5dp"
                 android:text="Train Route"
                 android:textColor="@android:color/white"
@@ -37,8 +39,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:text="Lucknow"
-                    android:textSize="20sp"
-                    android:textStyle="italic"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/txtDestinationStation"
@@ -47,8 +48,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:text="Mumbai Cst"
-                    android:textSize="20sp"
-                    android:textStyle="italic"/>
+                    android:textSize="18sp"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -78,6 +78,7 @@
                 android:id="@+id/llBookingQuota"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:padding="5dp"
                 android:layout_below="@+id/rlFromToStation">
 
                 <TextView
@@ -86,9 +87,8 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="Booking Quota:"
-                    android:textSize="20sp"
-                    android:textStyle="italic"/>
+                    android:text="Quota:"
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/txtBookingQuotaValue"
@@ -97,22 +97,30 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:text="General"
-                    android:textSize="20sp"
-                    android:textStyle="italic"/>
+                    android:textSize="18sp"/>
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:text="H"
+                android:layout_below="@+id/llBookingQuota"/>
 
             <ListView
                 android:id="@+id/listViewTrainFare"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/llBookingQuota"
-                android:layout_margin="10dp"
+                android:layout_below="@+id/line"
+                android:padding="5dp"
                 android:divider="@android:color/darker_gray"
                 android:dividerHeight="1dp"
+                android:headerDividersEnabled="true"
+                android:footerDividersEnabled="true"
                 android:entries="@array/travel_class_array"
                 android:scrollbars="none"/>
         </RelativeLayout>
 
-        </RelativeLayout>
     </RelativeLayout>
+</RelativeLayout>

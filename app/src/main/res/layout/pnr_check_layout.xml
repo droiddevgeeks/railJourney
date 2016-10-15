@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/background_light_white">
 
     <RelativeLayout
         android:id="@+id/rlPNRCheckLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:padding="10dp">
 
         <TextView
@@ -24,44 +25,46 @@
             android:id="@+id/frameEditBoxPNR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/txtPNR">
+            android:layout_below="@+id/txtPNR">
 
             <EditText
                 android:id="@+id/edtPRNEnterBox"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/section_background"
-                android:maxLength="10"
                 android:hint="enter pnr"
+                android:textColorHint="@drawable/hint_remove_selector"
                 android:inputType="number"
-                android:paddingLeft="15dp"/>
+                android:maxLength="10"
+                android:paddingLeft="15dp"
+                android:paddingStart="15dp"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/card_view_text_color"/>
 
             <ImageView
                 android:id="@+id/imgClearPNR"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:src="@drawable/cross"
                 android:layout_gravity="right|end|center_vertical"
-                android:visibility="invisible"
                 android:paddingEnd="10dp"
-                android:paddingRight="10dp"/>
+                android:paddingRight="10dp"
+                android:src="@drawable/cross"
+                android:visibility="invisible"/>
 
         </FrameLayout>
 
-        <TextView
+        <Button
             android:id="@+id/txtCheckPNR"
             android:layout_width="150dp"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textSize="16dp"
             android:layout_below="@+id/frameEditBoxPNR"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/section_background"
-            android:gravity="center"
+            android:background="@drawable/custom_button_background"
             android:text="Check"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            />
+            android:textColor="@android:color/black"/>
 
     </RelativeLayout>
 

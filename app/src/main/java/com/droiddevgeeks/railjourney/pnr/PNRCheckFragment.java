@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import com.droiddevgeeks.railjourney.R;
 
 public class PNRCheckFragment extends Fragment implements View.OnClickListener
 {
-    private TextView _checkPNR;
+    private Button _checkPNR;
     private EditText _enterPNR;
     private ImageView _clearPNR;
 
@@ -40,7 +41,8 @@ public class PNRCheckFragment extends Fragment implements View.OnClickListener
     {
         super.onViewCreated(view, savedInstanceState);
         _enterPNR = (EditText) view.findViewById(R.id.edtPRNEnterBox);
-        _checkPNR = (TextView) view.findViewById(R.id.txtCheckPNR);
+        _checkPNR = (Button
+                ) view.findViewById(R.id.txtCheckPNR);
         _clearPNR = (ImageView) view.findViewById(R.id.imgClearPNR);
 
 

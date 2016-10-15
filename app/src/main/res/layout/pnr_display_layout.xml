@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp"
-    >
+    android:padding="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        >
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/txtTrainRouteHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/statusbar"
+            android:background="@color/steel_blue"
             android:padding="5dp"
             android:text="Train Route"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtTrainRouteHeader"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/txtSourceStation"
@@ -40,8 +35,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:text="Lucknow"
-                android:textSize="20sp"
-                />
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/txtDestinationStation"
@@ -50,9 +44,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:text="Mumbai Cst"
-                android:textSize="20sp"
-
-                />
+                android:textSize="18sp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -91,20 +83,18 @@
             android:id="@+id/txtYourRouteHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/statusbar"
+            android:background="@color/steel_blue"
             android:padding="5dp"
             android:text="Your Journey"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtYourRouteHeader"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/txtPassengerSourceStation"
@@ -113,8 +103,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:text="Lucknow"
-                android:textSize="20sp"
-                />
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/txtPassengerDestinationStation"
@@ -123,8 +112,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:text="Mumbai Cst"
-                android:textSize="20sp"
-                />
+                android:textSize="18sp"/>
         </RelativeLayout>
     </RelativeLayout>
 
@@ -132,7 +120,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:background="@color/statusbar"
+        android:background="@color/steel_blue"
         android:padding="5dp"
         android:text="Pnr Status"
         android:textColor="@android:color/white"

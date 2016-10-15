@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v7.widget.CardView
+    android:id="@+id/rlCancelTrain"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    app:cardBackgroundColor="@color/card_view_background"
+    android:layout_height="100dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-        android:id="@+id/rlCancelTrain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_height="match_parent"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp">
 
         <RelativeLayout
             android:id="@+id/rlFromToStation"
             android:layout_width="match_parent"
-            android:layout_height="36dp">
+            android:layout_height="30dp">
 
             <TextView
                 android:id="@+id/txtSourceStation"
@@ -24,7 +29,8 @@
                 android:layout_alignParentStart="true"
                 android:gravity="center"
                 android:text="Lucknow"
-                android:textSize="20sp"
+                android:textSize="16sp"
+                android:textColor="@color/card_view_text_color"
                 />
 
             <TextView
@@ -34,8 +40,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
+                android:textColor="@color/card_view_text_color"
                 android:text="Mumbai"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 />
 
             <RelativeLayout
@@ -64,7 +71,7 @@
         <RelativeLayout
             android:id="@+id/rlTrainName"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="30dp"
             android:layout_below="@+id/rlFromToStation">
 
             <TextView
@@ -73,9 +80,10 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:textColor="@color/card_view_text_color"
                 android:gravity="center"
                 android:text="Train Name"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
 
             <TextView
                 android:id="@+id/txtTrainNameValue"
@@ -83,15 +91,16 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:textColor="@color/card_view_text_color"
                 android:gravity="center"
                 android:text="Pushpak"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rlTrainTime"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="30dp"
             android:layout_below="@+id/rlTrainName">
 
             <TextView
@@ -101,8 +110,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:gravity="center"
+                android:textColor="@color/card_view_text_color"
                 android:text="Departure Time"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
 
             <TextView
                 android:id="@+id/txtTrainTimeValue"
@@ -111,11 +121,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
+                android:textColor="@color/card_view_text_color"
                 android:text="7:20 PM"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
         </RelativeLayout>
-
     </RelativeLayout>
-
-
-</RelativeLayout>
+</android.support.v7.widget.CardView>

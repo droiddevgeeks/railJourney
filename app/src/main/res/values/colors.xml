@@ -15,4 +15,8 @@
     <color name="theme_color">#81A4CD</color>
     <color name="statusbar">#4c0000 </color>
     <color name="light_text_color">#D3D3D3</color>
+    <color name="background_light_white">#eaeaea</color>
+    <color name="editbox_background">#F7F7F7</color>
+    <color name="card_view_background">#e0e0e0</color>
+    <color name="card_view_text_color">#4c4c4c</color>
 </resources>
