@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_light_white">
+
+    <RelativeLayout
+        android:id="@+id/rlPNRCheckLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txtPNR"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="@string/fare_train_name_number"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
+
+        <FrameLayout
+            android:id="@+id/frameEditBoxPNR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPNR">
+
+            <EditText
+                android:id="@+id/edtPRNEnterBox"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/section_background"
+                android:hint="enter train / number"
+                android:textColorHint="@drawable/hint_remove_selector"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingLeft="15dp"
+                android:paddingStart="15dp"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/card_view_text_color"/>
+
+            <ImageView
+                android:id="@+id/imgClearPNR"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_gravity="right|end|center_vertical"
+                android:paddingEnd="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/cross"
+                android:visibility="invisible"/>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btnTrainRoute"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textSize="16dp"
+            android:layout_below="@+id/frameEditBoxPNR"
+            android:background="@drawable/custom_button_background"
+            android:text="@string/train_route"
+            android:textColor="@android:color/black"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -49,6 +49,16 @@
         <item>Premium Tatkal</item>
     </string-array>
 
+    <string name="english">English</string>
+    <string name="hindi">Hindi</string>
+    <string name="marathi">Marathi</string>
+
+    <!--train live status-->
+    <string name="live_train_status">Get Status</string>
+
+    <!--train roue-->
+    <string name="train_route">Get Route</string>
+
 
     <!--fare string-->
     <string name="fare_train_name_number">Train No/Name</string>

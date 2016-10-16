@@ -1,6 +1,5 @@
 package com.droiddevgeeks.railjourney.fragments;
 
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
@@ -19,6 +17,8 @@ import com.droiddevgeeks.railjourney.canceltrain.CancelTrainFragment;
 import com.droiddevgeeks.railjourney.fareenquiry.FareEnquiryFragment;
 import com.droiddevgeeks.railjourney.models.SectionVO;
 import com.droiddevgeeks.railjourney.pnr.PNRCheckFragment;
+import com.droiddevgeeks.railjourney.train_status.TrainStatusInputFragment;
+import com.droiddevgeeks.railjourney.trainroute.TrainRouteFragment;
 import com.droiddevgeeks.railjourney.utils.Utilities;
 
 import java.util.ArrayList;
@@ -83,6 +83,12 @@ public class HomeScreenFragment extends Fragment implements AdapterView.OnItemCl
                 break;
             case 2 :
                 getFragmentManager().beginTransaction().replace(R.id.container, new FareEnquiryFragment()).addToBackStack(null).commit();
+                break;
+            case 4 :
+                getFragmentManager().beginTransaction().replace(R.id.container, new TrainStatusInputFragment()).addToBackStack(null).commit();
+                break;
+            case 5 :
+                getFragmentManager().beginTransaction().replace(R.id.container, new TrainRouteFragment()).addToBackStack(null).commit();
                 break;
             case 6 :
                 getFragmentManager().beginTransaction().replace(R.id.container, new CancelTrainFragment()).addToBackStack(null).commit();

@@ -1,12 +1,9 @@
 package com.droiddevgeeks.railjourney.adapters;
 
 import android.content.Context;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -16,7 +13,6 @@ import android.widget.TextView;
 import com.droiddevgeeks.railjourney.ItemClickedListener;
 import com.droiddevgeeks.railjourney.R;
 import com.droiddevgeeks.railjourney.models.SectionVO;
-import com.droiddevgeeks.railjourney.utils.Utilities;
 
 import java.util.ArrayList;
 

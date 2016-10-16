@@ -41,8 +41,7 @@ public class PNRCheckFragment extends Fragment implements View.OnClickListener
     {
         super.onViewCreated(view, savedInstanceState);
         _enterPNR = (EditText) view.findViewById(R.id.edtPRNEnterBox);
-        _checkPNR = (Button
-                ) view.findViewById(R.id.txtCheckPNR);
+        _checkPNR = (Button) view.findViewById(R.id.txtCheckPNR);
         _clearPNR = (ImageView) view.findViewById(R.id.imgClearPNR);
 
 

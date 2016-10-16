@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.droiddevgeeks.railjourney.ItemClickedListener;
 import com.droiddevgeeks.railjourney.R;
 
 import java.util.List;
