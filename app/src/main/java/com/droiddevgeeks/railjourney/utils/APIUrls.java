@@ -5,7 +5,7 @@ package com.droiddevgeeks.railjourney.utils;
  */
 public class APIUrls
 {
-    private static final String API_KEY = "h4s56sdg";
+    private static final String API_KEY = "";
     public static final String BASE_PREFIX_URL = "http://api.railwayapi.com/";
     public static final String BASE_SUFFIX_URL = "/apikey/"+API_KEY;
 
