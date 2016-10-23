@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/listview_row_background"
+    android:layout_margin="5dp"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_color"
+        android:padding="5dp"
+        android:layout_marginBottom="5dp"
+        >
+
+        <TextView
+            android:id="@+id/txtDateHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="15sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/txtSeatsCountHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seats"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlHeader"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17-10-2014"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/txtSeatsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="364"
+            android:textSize="15sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+</RelativeLayout>

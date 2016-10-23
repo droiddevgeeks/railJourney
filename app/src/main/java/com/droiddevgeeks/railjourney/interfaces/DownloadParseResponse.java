@@ -13,4 +13,5 @@ public abstract class DownloadParseResponse
         this.iDownloadListener = iDownloadListener;
     }
     public abstract void parseJson(JSONObject jsonObject, DownloadParseResponse downloadParseResponse);
+    public abstract int getType();
 }

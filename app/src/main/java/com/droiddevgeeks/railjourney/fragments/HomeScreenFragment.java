@@ -81,9 +81,13 @@ public class HomeScreenFragment extends Fragment implements AdapterView.OnItemCl
             case 0 :
                 getFragmentManager().beginTransaction().replace(R.id.container, new PNRCheckFragment()).addToBackStack(null).commit();
                 break;
+            case 1 :
+                getFragmentManager().beginTransaction().replace(R.id.container, new PNRCheckFragment()).addToBackStack(null).commit();
+                break;
             case 2 :
                 getFragmentManager().beginTransaction().replace(R.id.container, new FareEnquiryFragment()).addToBackStack(null).commit();
                 break;
+
             case 4 :
                 getFragmentManager().beginTransaction().replace(R.id.container, new TrainStatusInputFragment()).addToBackStack(null).commit();
                 break;

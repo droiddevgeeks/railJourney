@@ -13,7 +13,7 @@
     <color name="dodgerblue">#1E90FF</color>
     <color name="toolbar">#990000</color>
     <color name="theme_color">#81A4CD</color>
-    <color name="statusbar">#4c0000 </color>
+    <color name="statusbar">#4c0000</color>
     <color name="light_text_color">#D3D3D3</color>
     <color name="background_light_white">#eaeaea</color>
     <color name="editbox_background">#F7F7F7</color>

@@ -2,7 +2,6 @@ package com.droiddevgeeks.railjourney.train_status;
 
 import com.droiddevgeeks.railjourney.interfaces.DownloadParseResponse;
 import com.droiddevgeeks.railjourney.interfaces.IDownloadListener;
-import com.droiddevgeeks.railjourney.models.TrainRouteVO;
 import com.droiddevgeeks.railjourney.models.TrainStatusVO;
 
 import org.json.JSONArray;
@@ -57,6 +56,12 @@ public class TrainStatusResponse extends DownloadParseResponse
         catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public int getType()
+    {
+        return 0;
     }
 
     public ArrayList<TrainStatusVO> get_trainStatusVOs()

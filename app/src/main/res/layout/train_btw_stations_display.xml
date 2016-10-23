@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rlMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@drawable/listview_row_background"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rlTrainInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@color/statusbar"
+        >
+
+        <TextView
+            android:id="@+id/txtTrainName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="RAPTI SAGAR EXP"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            />
+
+        <TextView
+            android:id="@+id/txtTrainNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="12511"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:id="@+id/rlTrainDepartureTimeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+
+            >
+            <TextView
+                android:id="@+id/txtTrainArrivalTimeHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Departure"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:background="@android:color/darker_gray"
+                android:textColor="@android:color/white"
+                android:padding="5dp"
+                />
+            <TextView
+                android:id="@+id/txtTrainDepartureTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="06:50"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/txtTrainArrivalTimeHeader"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            >
+            <TextView
+                android:id="@+id/txtTrainTotalTimeHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@android:color/darker_gray"
+                android:textColor="@android:color/white"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                />
+
+            <TextView
+                android:id="@+id/txtTrainTotalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="21:15"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@+id/txtTrainTotalTimeHeader"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            >
+            <TextView
+                android:id="@+id/txtTrainDepartureTimeHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arrival"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:background="@android:color/darker_gray"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                />
+            <TextView
+                android:id="@+id/txtTrainArrivalTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="03:35"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/txtTrainDepartureTimeHeader"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <TextView
+            android:id="@+id/txtDaysHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="Days:"
+            android:layout_marginRight="10dp"
+
+            />
+        <TextView
+            android:id="@+id/txtDateInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txtDaysHeader"
+            android:text="Mon,Tues,Wed,Thurs,Fri,Sat,Sun"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <TextView
+            android:id="@+id/txtClassHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="Class:"
+            android:layout_marginRight="10dp"
+
+            />
+        <TextView
+            android:id="@+id/txtClassInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txtClassHeader"
+            android:text="1A,2B,3C,4D,5E,6F,7G,8H,9I"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            />
+    </RelativeLayout>
+
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:weightSum="0.8">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.1"
+             android:gravity="center"
+             android:text="AC"
+             android:padding="5dp"
+             style="@style/Indicator_Enable"
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.1"
+             android:gravity="center"
+             android:text="AC"
+             android:padding="5dp"
+             style="@style/Indicator_Disable"
+
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.1"
+             android:gravity="center"
+             android:text="AC"
+             android:padding="5dp"
+             style="@style/Indicator_Enable"
+
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.1"
+             android:gravity="center"
+             android:text="AC"
+             android:padding="5dp"
+             style="@style/Indicator_Disable"
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.1"
+             android:gravity="center"
+             android:text="AC"
+             android:padding="5dp"
+             style="@style/Indicator_Enable"
+
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.1"
+             android:gravity="center"
+             android:text="AC"
+             android:padding="5dp"
+             style="@style/Indicator_Disable"
+
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.1"
+             android:gravity="center"
+             android:text="AC"
+             android:padding="5dp"
+             style="@style/Indicator_Enable"
+
+             />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.1"
+             android:gravity="center"
+             android:text="AC"
+             android:padding="5dp"
+             style="@style/Indicator_Disable"
+
+             />
+
+
+     </LinearLayout>-->
+</LinearLayout>

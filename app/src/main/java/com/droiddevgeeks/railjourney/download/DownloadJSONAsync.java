@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,12 +22,12 @@ import java.net.URL;
 public class DownloadJSONAsync extends AsyncTask<String, Integer, String>
 {
     private String _downloadURL;
-    private DownloadParseResponse _downloadParseResponse;
+    private WeakReference<DownloadParseResponse> _downloadParseResponse;
 
     public DownloadJSONAsync(String url, DownloadParseResponse downloadParseResponse)
     {
         _downloadURL = url;
-        _downloadParseResponse = downloadParseResponse;
+        _downloadParseResponse = new WeakReference<>( downloadParseResponse );
     }
 
     @Override
@@ -73,7 +74,11 @@ public class DownloadJSONAsync extends AsyncTask<String, Integer, String>
             try
             {
                 _downloadURL = null;
-                _downloadParseResponse.parseJson(new JSONObject(s), _downloadParseResponse);
+                DownloadParseResponse downloadParseResponse =  _downloadParseResponse.get();
+                if( downloadParseResponse != null)
+                {
+                    downloadParseResponse.parseJson(new JSONObject(s), downloadParseResponse);
+                }
                 _downloadParseResponse = null;
             }
             catch (JSONException e)

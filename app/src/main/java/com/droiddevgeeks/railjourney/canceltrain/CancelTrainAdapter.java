@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.droiddevgeeks.railjourney.R;
-import com.droiddevgeeks.railjourney.navigation_drawer.NavigationDrawerListAdapter;
+import com.droiddevgeeks.railjourney.models.CancelledTrainVO;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ import java.util.List;
 public class CancelTrainAdapter extends BaseAdapter
 {
     private Context _context;
-    private List<CancelTrainVO> _list;
+    private List<CancelledTrainVO> _list;
 
-    public CancelTrainAdapter(Context context, List<CancelTrainVO> list)
+    public CancelTrainAdapter(Context context, List<CancelledTrainVO> list)
     {
         _context = context;
         _list = list;
@@ -60,6 +60,12 @@ public class CancelTrainAdapter extends BaseAdapter
             holder = (CancelTrainAdapter.CancelTrainViewHolder) convertView.getTag();
         }
 
+        holder.trainName.setText( _list.get( position ).getTrainName() );
+        holder.trainNumber.setText( _list.get( position ).getTrainNumber() );
+        holder.fromStation.setText( _list.get( position ).getSource() );
+        holder.toStation.setText( _list.get( position ).getDestination() );
+        holder.trainTime.setText( _list.get( position ).getTrainStartTime() );
+
         return convertView;
 
     }
@@ -67,11 +73,12 @@ public class CancelTrainAdapter extends BaseAdapter
 
     private class CancelTrainViewHolder
     {
-        private TextView trainName, fromStation, toStation, trainTime;
+        private TextView trainName,trainNumber, fromStation, toStation, trainTime;
 
         public CancelTrainViewHolder(View itemView)
         {
             trainName = (TextView) itemView.findViewById(R.id.txtTrainNameValue);
+            trainNumber = (TextView)itemView.findViewById( R.id.txtTrainNumber );
             fromStation = (TextView) itemView.findViewById(R.id.txtSourceStation);
             toStation = (TextView) itemView.findViewById(R.id.txtDestinationStation);
             trainTime = (TextView) itemView.findViewById(R.id.txtTrainTimeValue);

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <include android:id="@+id/toolbar" layout="@layout/toolbar"/>
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:layout_below="@+id/toolbar"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/rlTrainNameAndCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/blue"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/txtTrainNameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Train name"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/txtTrainNumberTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Train no"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlTrainNameAndCode"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/txtTrainName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="NDLS SHATABDI E"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/txtTrainNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:text="12001"
+            android:textSize="15sp"
+            />
+    </RelativeLayout>
+
+    <include layout="@layout/source_to_dest_template"/>
+
+    <RelativeLayout
+        android:id="@+id/rlTrainClassAndQuota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/blue"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/txtClassTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/txtQuotaTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Quota"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/txtTrainClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="AC CHAIR CAR"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/txtTrainQuota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:text="GENERAL QUOTA"
+            android:textSize="15sp"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtListViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@android:color/white"
+        android:background="@color/theme_color"
+        android:text="SeatAvailable"
+        android:textSize="15sp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        />
+
+
+    <ListView
+        android:id="@+id/lstViewSeatAvailibility"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="2dp"
+
+        />
+
+</LinearLayout>
+</RelativeLayout>

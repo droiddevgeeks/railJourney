@@ -2,19 +2,19 @@
 <android.support.v7.widget.CardView
     android:id="@+id/rlCancelTrain"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    app:cardBackgroundColor="@color/card_view_background"
     android:layout_height="100dp"
-    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/card_view_background"
     app:cardCornerRadius="5dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:cardElevation="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="5dp"
         android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingBottom="5dp">
+        android:paddingRight="5dp">
 
         <RelativeLayout
             android:id="@+id/rlFromToStation"
@@ -29,8 +29,8 @@
                 android:layout_alignParentStart="true"
                 android:gravity="center"
                 android:text="Lucknow"
-                android:textSize="16sp"
                 android:textColor="@color/card_view_text_color"
+                android:textSize="16sp"
                 />
 
             <TextView
@@ -40,8 +40,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
-                android:textColor="@color/card_view_text_color"
                 android:text="Mumbai"
+                android:textColor="@color/card_view_text_color"
                 android:textSize="16sp"
                 />
 
@@ -51,20 +51,31 @@
                 android:layout_toLeftOf="@+id/txtDestinationStation"
                 android:layout_toRightOf="@+id/txtSourceStation">
 
-                <ImageView
-                    android:id="@+id/imgEngine"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/engine"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="1">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/imgEngine"
-                    android:src="@drawable/right_arrow"/>
+                    <TextView
+                        android:id="@+id/txtTrainNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_weight=".2"
+                        android:gravity="end|center_vertical"
+                        android:layout_centerInParent="true"
+                        android:text="Train Number"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight=".2"
+                        android:layout_toRightOf="@+id/imgEngine"
+                        android:src="@drawable/right_arrow"/>
+                </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -80,9 +91,9 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:textColor="@color/card_view_text_color"
                 android:gravity="center"
                 android:text="Train Name"
+                android:textColor="@color/card_view_text_color"
                 android:textSize="16sp"/>
 
             <TextView
@@ -91,9 +102,9 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:textColor="@color/card_view_text_color"
                 android:gravity="center"
                 android:text="Pushpak"
+                android:textColor="@color/card_view_text_color"
                 android:textSize="16sp"/>
         </RelativeLayout>
 
@@ -110,8 +121,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:gravity="center"
-                android:textColor="@color/card_view_text_color"
                 android:text="Departure Time"
+                android:textColor="@color/card_view_text_color"
                 android:textSize="16sp"/>
 
             <TextView
@@ -121,8 +132,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
-                android:textColor="@color/card_view_text_color"
                 android:text="7:20 PM"
+                android:textColor="@color/card_view_text_color"
                 android:textSize="16sp"/>
         </RelativeLayout>
     </RelativeLayout>

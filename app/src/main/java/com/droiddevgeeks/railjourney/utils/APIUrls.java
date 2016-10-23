@@ -17,5 +17,6 @@ public class APIUrls
     public static final String SEAT_AVAIL = "pnr_status/pnr/";
     public static final String CANCELLED_TRAIN = "pnr_status/pnr/";
     public static final String TRAIN_AT_STATION = "pnr_status/pnr/";
+    public static final String AUTOSUGGESTLIST = "/suggest_train/trains/";
 
 }
