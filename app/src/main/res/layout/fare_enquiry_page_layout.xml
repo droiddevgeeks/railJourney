@@ -27,6 +27,7 @@
                 android:nextFocusDown="@+id/edtFromStation"
                 android:padding="5dp"
                 android:singleLine="true"
+                android:background="@android:color/transparent"
                 android:textColor="@color/card_view_text_color"
                 android:textColorHint="@drawable/hint_remove_selector"
                 android:textCursorDrawable="@null"/>
@@ -52,7 +53,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/section_background">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/edtFromStation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,6 +62,7 @@
                 android:nextFocusDown="@+id/edtToStation"
                 android:padding="5dp"
                 android:singleLine="true"
+                android:background="@android:color/transparent"
                 android:textColor="@color/card_view_text_color"
                 android:textColorHint="@drawable/hint_remove_selector"
                 android:textCursorDrawable="@null"/>
@@ -86,7 +88,7 @@
             android:background="@drawable/section_background"
             android:layout_marginTop="10dp">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/edtToStation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,6 +97,7 @@
                 android:nextFocusDown="@+id/edtDate"
                 android:padding="5dp"
                 android:singleLine="true"
+                android:background="@android:color/transparent"
                 android:textColor="@color/card_view_text_color"
                 android:textColorHint="@drawable/hint_remove_selector"
                 android:textCursorDrawable="@null"/>
@@ -121,14 +124,16 @@
             android:background="@drawable/section_background"
             android:layout_marginTop="10dp">
 
-            <EditText
-                android:id="@+id/edtDate"
+            <TextView
+                android:id="@+id/txtDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/fare_date_of_journey"
                 android:inputType="none"
                 android:padding="5dp"
                 android:singleLine="true"
+                android:textSize="16sp"
+                android:background="@android:color/transparent"
                 android:textColor="@color/card_view_text_color"
                 android:textColorHint="@drawable/hint_remove_selector"
                 android:textCursorDrawable="@null"/>
@@ -197,6 +202,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
+            android:padding="5dp"
             android:background="@drawable/language_name_background"
             android:text="@string/fare_get_fare"
             android:textColor="@android:color/white"

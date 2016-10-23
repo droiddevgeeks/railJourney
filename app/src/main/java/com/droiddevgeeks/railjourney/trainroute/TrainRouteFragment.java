@@ -121,7 +121,7 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
     {
 
         String url = APIUrls.BASE_PREFIX_URL + APIUrls.AUTOSUGGESTLIST + keyword + APIUrls.BASE_SUFFIX_URL;
-        DownloadParseResponse downloadParseResponse = new AutoSuggestResponse( this );
+        DownloadParseResponse downloadParseResponse = new AutoSuggestResponse( this , getContext() );
         DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync( url, downloadParseResponse );
         downloadJSONAsync.execute();
     }

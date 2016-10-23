@@ -1,14 +1,19 @@
 package com.droiddevgeeks.railjourney.autosuggest;
 
+import android.content.Context;
+
 import com.droiddevgeeks.railjourney.interfaces.DownloadParseResponse;
 import com.droiddevgeeks.railjourney.interfaces.IDownloadListener;
+import com.droiddevgeeks.railjourney.memory.JsonStorage;
 import com.droiddevgeeks.railjourney.models.AutoCompleteVO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,17 +24,25 @@ public class AutoSuggestResponse extends DownloadParseResponse
 {
 
     private List<AutoCompleteVO> _autoCompleTeList;
+    private Context _context;
 
-    public AutoSuggestResponse(IDownloadListener iDownloadListener)
+    public AutoSuggestResponse(IDownloadListener iDownloadListener , Context context)
     {
         super( iDownloadListener );
         _autoCompleTeList = new ArrayList<>();
+        _context = context;
     }
 
     @Override
     public void parseJson(JSONObject jsonObject, DownloadParseResponse downloadParseResponse)
     {
 
+        String todaysDate = (new SimpleDateFormat( "dd-MM-yyyy" ).format( new Date() )).toString();
+        String jsonString = JsonStorage.getJsonFileData( _context, "AutoSuggest"+todaysDate );
+        if ( jsonString == null )
+        {
+            JsonStorage.saveJsonToFile( _context, jsonObject.toString(), "AutoSuggest"+todaysDate );
+        }
         try
         {
             int responseCode = jsonObject.getInt( "response_code" );

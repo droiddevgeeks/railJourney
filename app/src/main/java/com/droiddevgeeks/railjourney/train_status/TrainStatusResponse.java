@@ -61,7 +61,7 @@ public class TrainStatusResponse extends DownloadParseResponse
     @Override
     public int getType()
     {
-        return 0;
+        return 500;
     }
 
     public ArrayList<TrainStatusVO> get_trainStatusVOs()

@@ -10,14 +10,7 @@ public class TrainStatusVO
     private int distance;
     private String arrivalTime;
 
-    public TrainStatusVO()
-    {
 
-    }
-
-    public String getArrivalTime() {
-        return arrivalTime;
-    }
 
     public TrainStatusVO(String fullname, String departureTime, int distance, String arrivalTime)
     {
@@ -26,6 +19,10 @@ public class TrainStatusVO
         this.departureTime = departureTime;
         this.distance      = distance;
         this.arrivalTime   = arrivalTime;
+    }
+
+    public String getArrivalTime() {
+        return arrivalTime;
     }
 
     public int getDistance() {

@@ -4,49 +4,29 @@
                 android:layout_height="match_parent"
                 android:background="@color/background_light_white">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/llTrainName"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginTop="10dp"
-            android:weightSum="1">
 
-            <TextView
-                android:id="@+id/txtTrainName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".7"
-                android:gravity="center"
-                android:text="@string/fare_train_name_number"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"/>
-
-            <FrameLayout
+            <RelativeLayout
                 android:id="@+id/frameEditBoxTrain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3">
+                android:background="@drawable/section_background">
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/edtTrainName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginStart="5dp"
-                    android:background="@drawable/section_background"
+                    android:layout_height="wrap_content"
                     android:hint="@string/fare_train_name_number"
-                    android:imeOptions="actionNext"
-                    android:nextFocusDown="@+id/edtFromStation"
                     android:padding="5dp"
-                    android:paddingEnd="10dp"
-                    android:paddingRight="10dp"
                     android:singleLine="true"
+                    android:inputType="textAutoComplete"
+                    android:background="@android:color/transparent"
                     android:textColor="@color/card_view_text_color"
                     android:textColorHint="@drawable/hint_remove_selector"
                     android:textCursorDrawable="@null"/>
@@ -54,101 +34,63 @@
                 <ImageView
                     android:id="@+id/imgClearTrain"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:layout_gravity="right|end|center_vertical"
-                    android:paddingEnd="5dp"
-                    android:paddingLeft="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:paddingRight="5dp"
                     android:src="@drawable/cross"
                     android:visibility="gone"/>
 
-            </FrameLayout>
+            </RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llDateOfJourney"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_below="@+id/llTrainName"
-            android:layout_marginTop="10dp"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/txtDOJ"
+            <RelativeLayout
+                android:id="@+id/rlEditBoxDOJ"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".7"
-                android:gravity="center"
-                android:text="@string/fare_DOJ"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"/>
-
-            <FrameLayout
-                android:id="@+id/frameEditBoxDOJ"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".3">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/section_background">
 
                 <TextView
                     android:id="@+id/txtDate"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginStart="5dp"
-                    android:background="@drawable/section_background"
+                    android:layout_height="wrap_content"
                     android:hint="@string/fare_date_of_journey"
                     android:inputType="none"
                     android:padding="5dp"
                     android:singleLine="true"
+                    android:textSize="16sp"
+                    android:background="@android:color/transparent"
                     android:textColor="@color/card_view_text_color"
                     android:textColorHint="@drawable/hint_remove_selector"
                     android:textCursorDrawable="@null"/>
 
                 <ImageView
-                    android:id="@+id/imgClearDate"
+                    android:id="@+id/imgCalenderDate"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:layout_gravity="right|end|center_vertical"
-                    android:paddingEnd="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:paddingRight="5dp"
                     android:src="@drawable/calendar"
                     android:visibility="visible"/>
 
-            </FrameLayout>
+            </RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llGetLiveStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/llDateOfJourney"
-            android:layout_marginTop="20dp"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/txtLiveStatus"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".8"
-                android:gravity="center"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"/>
 
             <Button
                 android:id="@+id/btnTrainStatus"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".4"
-                android:background="@drawable/custom_button_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:background="@drawable/language_name_background"
                 android:text="@string/live_train_status"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="16sp"/>
 
-        </LinearLayout>
-
-
-
-    </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>

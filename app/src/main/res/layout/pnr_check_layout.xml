@@ -4,68 +4,60 @@
                 android:layout_height="match_parent"
                 android:background="@color/background_light_white">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rlPNRCheckLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtPNR"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:gravity="center"
-            android:paddingLeft="5dp"
-            android:text="PNR :"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"/>
-
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/frameEditBoxPNR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtPNR">
+            android:background="@drawable/section_background">
 
             <EditText
                 android:id="@+id/edtPRNEnterBox"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:background="@drawable/section_background"
                 android:hint="enter pnr"
                 android:textColorHint="@drawable/hint_remove_selector"
                 android:inputType="number"
                 android:maxLength="10"
-                android:paddingLeft="15dp"
-                android:paddingStart="15dp"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
                 android:textCursorDrawable="@null"
                 android:textColor="@color/card_view_text_color"/>
 
             <ImageView
                 android:id="@+id/imgClearPNR"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:layout_gravity="right|end|center_vertical"
-                android:paddingEnd="10dp"
-                android:paddingRight="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="5dp"
                 android:src="@drawable/cross"
                 android:visibility="invisible"/>
 
-        </FrameLayout>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/txtCheckPNR"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:textSize="16dp"
-            android:layout_below="@+id/frameEditBoxPNR"
-            android:background="@drawable/custom_button_background"
-            android:text="Check"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:background="@drawable/language_name_background"
+            android:textSize="16sp"
+            android:text="Get Status"
             android:textColor="@android:color/black"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
