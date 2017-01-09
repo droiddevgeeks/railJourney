@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Schedule Arrival"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/scharr"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="11:00"
+            android:gravity="center"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Schedule Departure"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/schdep"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="11:00"
+            android:gravity="center"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Delay Arrival"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/delayarr"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="11:00"
+            android:gravity="center"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Delay Departure"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/delaydep"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="11:00"
+            android:gravity="center"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Actual Arrival"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/actarr"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="11:00"
+            android:gravity="center"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Actual Departure"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/actdep"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="11:00"
+            android:gravity="center"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

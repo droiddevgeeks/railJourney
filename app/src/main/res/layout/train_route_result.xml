@@ -225,6 +225,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/routeTable"
+            android:scrollbars="none"
             android:entries="@array/travel_class_array"
             />
     </RelativeLayout>

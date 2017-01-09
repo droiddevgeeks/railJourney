@@ -24,7 +24,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:hint="enter pnr"
-                android:textColorHint="@drawable/hint_remove_selector"
                 android:inputType="number"
                 android:maxLength="10"
                 android:background="@android:color/transparent"
@@ -45,18 +44,20 @@
 
         </RelativeLayout>
 
-        <Button
+        <TextView
             android:id="@+id/txtCheckPNR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:padding="5dp"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:background="@drawable/language_name_background"
             android:textSize="16sp"
             android:text="Get Status"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/white"/>
 
     </LinearLayout>
 

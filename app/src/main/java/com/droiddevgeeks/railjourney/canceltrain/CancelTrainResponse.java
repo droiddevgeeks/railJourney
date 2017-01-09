@@ -27,7 +27,7 @@ public class CancelTrainResponse extends DownloadParseResponse
 
     public CancelTrainResponse(IDownloadListener iDownloadListener, Context context)
     {
-        super( iDownloadListener );
+        super(iDownloadListener);
         _context = context;
         _cancelTrainList = new ArrayList<>();
     }
@@ -35,51 +35,55 @@ public class CancelTrainResponse extends DownloadParseResponse
     @Override
     public void parseJson(JSONObject jsonObject, DownloadParseResponse downloadParseResponse)
     {
-        String todaysDate = (new SimpleDateFormat( "dd-MM-yyyy" ).format( new Date() )).toString();
-        String jsonString = JsonStorage.getJsonFileData( _context, todaysDate );
-        if ( jsonString == null )
+        /*String todaysDate = (new SimpleDateFormat("dd-MM-yyyy").format(new Date())).toString();
+        String jsonString = JsonStorage.getJsonFileData(_context, todaysDate);
+        if (jsonString == null)
         {
-            JsonStorage.saveJsonToFile( _context, jsonObject.toString(), todaysDate );
-        }
+            JsonStorage.saveJsonToFile(_context, jsonObject.toString(), todaysDate);
+        }*/
         try
         {
-            int responseCode = jsonObject.getInt( "response_code" );
-            if ( responseCode == 200 )
+            int responseCode = jsonObject.getInt("response_code");
+            if (responseCode == 200)
             {
-                JSONArray jsonArray = jsonObject.getJSONArray( "trains" );
+                JSONArray jsonArray = jsonObject.getJSONArray("trains");
                 int len = jsonArray.length();
-                if ( len > 0 )
+                if (len > 0)
                 {
-                    for ( int i = 0; i < len; i++ )
+                    for (int i = 0; i < len; i++)
                     {
-                        JSONObject trainInfoJsonObject = jsonArray.getJSONObject( i );
+                        JSONObject trainInfoJsonObject = jsonArray.getJSONObject(i);
 
-                        JSONObject trainName = trainInfoJsonObject.getJSONObject( "train" );
-                        JSONObject trainSource = trainInfoJsonObject.getJSONObject( "source" );
-                        JSONObject trainDest = trainInfoJsonObject.getJSONObject( "dest" );
+                        JSONObject trainName = trainInfoJsonObject.getJSONObject("train");
+                        JSONObject trainSource = trainInfoJsonObject.getJSONObject("source");
+                        JSONObject trainDest = trainInfoJsonObject.getJSONObject("dest");
 
-                        _cancelTrainList.add( new CancelledTrainVO(
-                                trainName.getString( "name" ),
-                                trainName.getString( "number" ),
-                                trainName.getString( "start_time" ),
-                                trainSource.getString( "name" ),
-                                trainDest.getString( "name" )
-                        ) );
+                        _cancelTrainList.add(new CancelledTrainVO(
+                                trainName.getString("name"),
+                                trainName.getString("number"),
+                                trainName.getString("start_time"),
+                                trainSource.getString("name"),
+                                trainDest.getString("name")
+                        ));
                     }
-                    super.iDownloadListener.onDownloadSuccess( downloadParseResponse );
+                    super.iDownloadListener.onDownloadSuccess(downloadParseResponse);
                 }
                 else
                 {
-                    super.iDownloadListener.onDownloadFailed();
+                    super.iDownloadListener.onDownloadFailed(204, "Not able to fetch data, Please try later");
                 }
             }
-            else
+            else if (responseCode == 204)
             {
-                super.iDownloadListener.onDownloadFailed();
+                super.iDownloadListener.onDownloadFailed(204, "Not able to fetch data, Please try later");
+            }
+            else if( responseCode == 403)
+            {
+                super.iDownloadListener.onDownloadFailed(403, "Not able to fetch data, Please try later");
             }
 
         }
-        catch ( JSONException e )
+        catch (JSONException e)
         {
             e.printStackTrace();
         }

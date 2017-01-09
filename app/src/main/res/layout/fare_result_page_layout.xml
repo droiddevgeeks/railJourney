@@ -5,9 +5,43 @@
                 android:background="@color/background_light_white">
 
     <RelativeLayout
+        android:id="@+id/rlError"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="Please  retry!"/>
+
+        <TextView
+            android:id="@+id/errorRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/errorMessage"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/language_name_background"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Retry"
+            android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/steel_blue"
                 android:padding="5dp"
-                android:text="Train Route"
+                android:text="Train Fare"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -32,56 +66,37 @@
                 android:layout_below="@id/txtTrainRouteHeader"
                 android:padding="5dp">
 
-                <TextView
-                    android:id="@+id/txtSourceStation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:text="Lucknow"
-                    android:textSize="18sp"/>
-
-                <TextView
-                    android:id="@+id/txtDestinationStation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:text="Mumbai Cst"
-                    android:textSize="18sp"/>
-
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/txtDestinationStation"
-                    android:layout_toRightOf="@+id/txtSourceStation">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:weightSum="1">
+                    <TextView
+                        android:id="@+id/txtSourceStation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Lucknow"
+                        android:layout_weight="4"
+                        android:textSize="18sp"/>
 
                     <TextView
                         android:id="@+id/txtTrainNumber"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight=".2"
-                        android:gravity="end|center_vertical"
-                        android:layout_centerInParent="true"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:text="Train Number"/>
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@+id/imgEngine"
-                        android:src="@drawable/right_arrow"/>
-
-                    </LinearLayout>
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txtDestinationStation"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="Mumbai Cst"
+                        android:layout_weight="4"
+                        android:textSize="18sp"/>
+                </LinearLayout>
             </RelativeLayout>
 
 
@@ -89,8 +104,8 @@
                 android:id="@+id/llBookingQuota"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:padding="5dp"
-                android:layout_below="@+id/rlFromToStation">
+                android:layout_below="@+id/rlFromToStation"
+                android:padding="5dp">
 
                 <TextView
                     android:id="@+id/txtBookingQuota"
@@ -116,20 +131,20 @@
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:text="H"
-                android:layout_below="@+id/llBookingQuota"/>
+                android:layout_below="@+id/llBookingQuota"
+                android:text="H"/>
 
             <ListView
                 android:id="@+id/listViewTrainFare"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/line"
-                android:padding="5dp"
                 android:divider="@android:color/darker_gray"
                 android:dividerHeight="1dp"
-                android:headerDividersEnabled="true"
-                android:footerDividersEnabled="true"
                 android:entries="@array/travel_class_array"
+                android:footerDividersEnabled="true"
+                android:headerDividersEnabled="true"
+                android:padding="5dp"
                 android:scrollbars="none"/>
         </RelativeLayout>
 

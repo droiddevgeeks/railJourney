@@ -1,39 +1,50 @@
 package com.droiddevgeeks.railjourney.models;
 
+import java.util.List;
+
 /**
  * Created by kunal on 12-10-2016.
  */
 public class TrainStatusVO
 {
-    private String fullname;
-    private String departureTime;
-    private int distance;
-    private String arrivalTime;
+    private boolean arrived;
+    private String trainNumber;
+    private String currentStation;
+    private String currentStatus;
+    private List<MidStationInfo> midStationList;
 
 
-
-    public TrainStatusVO(String fullname, String departureTime, int distance, String arrivalTime)
+    public TrainStatusVO(String trainNo,String currentStation, boolean arrived, String status, List<MidStationInfo> list)
     {
-        this.fullname      = fullname;
-
-        this.departureTime = departureTime;
-        this.distance      = distance;
-        this.arrivalTime   = arrivalTime;
+        this.trainNumber = trainNo;
+        this.currentStation = currentStation;
+        this.arrived = arrived;
+        this.currentStatus = status;
+        this.midStationList = list;
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+    public boolean isArrived()
+    {
+        return arrived;
     }
 
-    public int getDistance() {
-        return distance;
+    public String getTrainNumber()
+    {
+        return trainNumber;
     }
 
-    public String getDepartureTime() {
-        return departureTime;
+    public String getCurrentStation()
+    {
+        return currentStation;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getCurrentStatus()
+    {
+        return currentStatus;
+    }
+
+    public List<MidStationInfo> getMidStationList()
+    {
+        return midStationList;
     }
 }

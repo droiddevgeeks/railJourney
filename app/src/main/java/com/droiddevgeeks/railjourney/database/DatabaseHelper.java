@@ -14,7 +14,7 @@ import com.droiddevgeeks.railjourney.models.PnrDBVO;
 import java.util.ArrayList;
 
 /**
- * Created by kunal.sale on 10/19/2016.
+ * Created by Vampire on 10/19/2016.
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper

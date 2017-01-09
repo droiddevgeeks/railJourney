@@ -1,6 +1,7 @@
 package com.droiddevgeeks.railjourney.train_status;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,11 +24,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.droiddevgeeks.railjourney.R;
+import com.droiddevgeeks.railjourney.autosuggest.AutoCompleteAdapter;
 import com.droiddevgeeks.railjourney.autosuggest.AutoSuggestResponse;
 import com.droiddevgeeks.railjourney.download.DownloadJSONAsync;
 import com.droiddevgeeks.railjourney.interfaces.DownloadParseResponse;
@@ -44,26 +48,33 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import static android.view.View.GONE;
 
 /**
- * Created by kunal on 11-10-2016.
+ * Created by kishan on 11-10-2016.
  */
-public class TrainStatusInputFragment extends Fragment implements View.OnClickListener, IDownloadListener, AdapterView.OnItemClickListener
+public class TrainStatusInputFragment extends Fragment implements View.OnClickListener, IDownloadListener
 {
     private final String TAG = TrainStatusInputFragment.class.getSimpleName();
-    private AutoCompleteTextView _edtTrainNumber;
+    private EditText _edtTrainNumber;
+    private ListView trainNameSuggestList;
     private ImageView _imgClearTrain;
     private ImageView _imgCalenderDate;
     private TextView _txtDate;
-    private Button _getStatus;
+    private TextView _getStatus;
     Date _currentDate, _selectedDate;
     Calendar _calendar;
     int _year, _month, _day;
     private String _selectedDOJ;
+    private StringBuilder doj;
     private List<AutoCompleteVO> _autoCompleteList;
-    private ArrayAdapter<String> _autoCompleteAdapter;
+    private AutoCompleteAdapter _autoCompleteAdapter;
     private boolean stopTextWatcher = false;
     String trainNumber;
+    private ProgressDialog waitingProgress;
+    private TextView _pageTitle;
 
     @Nullable
     @Override
@@ -76,10 +87,38 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        _edtTrainNumber = (AutoCompleteTextView) view.findViewById(R.id.edtTrainName);
+        _pageTitle = (TextView)getActivity().findViewById(R.id.appName);
+        _pageTitle.setText("Status");
+        _edtTrainNumber = (EditText) view.findViewById(R.id.edtTrainName);
         _edtTrainNumber.addTextChangedListener(_textWatcher);
         _edtTrainNumber.setTextColor(Color.BLACK);
-        _edtTrainNumber.setOnItemClickListener(this);
+        _edtTrainNumber.setOnKeyListener(new View.OnKeyListener()
+        {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent)
+            {
+                if (i == KeyEvent.KEYCODE_DEL)
+                {
+                    if(_edtTrainNumber.getText().length()<3)
+                    {
+                        trainNameSuggestList.setVisibility(GONE);
+                        stopTextWatcher = false;
+                    }
+                }
+                return false;
+            }
+        });
+        trainNameSuggestList = (ListView)view.findViewById(R.id.trainNameSuggestList);
+        trainNameSuggestList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                trainNameSuggestList.setVisibility(GONE);
+                _edtTrainNumber.setText(_autoCompleteList.get(i).getName());
+                trainNumber = _autoCompleteList.get(i).getCode();
+            }
+        });
 
         _imgClearTrain = (ImageView) view.findViewById(R.id.imgClearTrain);
         _imgClearTrain.setOnClickListener(this);
@@ -89,7 +128,7 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
         _imgCalenderDate = (ImageView) view.findViewById(R.id.imgCalenderDate);
         _imgCalenderDate.setOnClickListener(this);
 
-        _getStatus = (Button) view.findViewById(R.id.btnTrainStatus);
+        _getStatus = (TextView) view.findViewById(R.id.btnTrainStatus);
         _getStatus.setOnClickListener(this);
     }
 
@@ -103,10 +142,12 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
                 showCalender();
                 break;
             case R.id.imgClearTrain:
+                trainNameSuggestList.setVisibility(GONE);
+                stopTextWatcher = false;
                 clearTrainName();
                 break;
             case R.id.btnTrainStatus:
-                checkInputValidation();
+                checkInputValidation(v);
                 break;
         }
     }
@@ -132,15 +173,22 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
             {
                 _imgClearTrain.setVisibility(View.VISIBLE);
             }
-            if ( _edtTrainNumber.getText().length() >= 2 )
+            if(count < 3)
             {
-                if(stopTextWatcher)
+                trainNameSuggestList.setVisibility(GONE);
+                stopTextWatcher = false;
+            }
+
+            if (_edtTrainNumber.getText().length() == 3)
+            {
+
+                if (stopTextWatcher)
                 {
 
                 }
                 else
                 {
-                    callAutoSuggestAPI( _edtTrainNumber.getText().toString() );
+                    callAutoSuggestAPI(_edtTrainNumber.getText().toString());
                 }
 
             }
@@ -154,35 +202,40 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
             {
                 _imgClearTrain.setVisibility(View.INVISIBLE);
             }
+            String text = _edtTrainNumber.getText().toString().toLowerCase(Locale.getDefault());
+            if(_autoCompleteAdapter!=null)
+            {
+                _autoCompleteAdapter.filter(text);
+            }
+
         }
     };
 
     private void callAutoSuggestAPI(String keyword)
     {
-
-        String url = APIUrls.BASE_PREFIX_URL + APIUrls.AUTOSUGGESTLIST + keyword + APIUrls.BASE_SUFFIX_URL;
-        DownloadParseResponse downloadParseResponse = new AutoSuggestResponse( this , getContext());
-        String jsonString = JsonStorage.getJsonFileData( getContext() , "AutoSuggest"+(new SimpleDateFormat( "dd-MM-yyyy" ).format( new Date(  ))).toString());
-        if( jsonString != null )
+        String url = APIUrls.BASE_PREFIX_URL + APIUrls.AUTO_SUGGEST_LIST + keyword + APIUrls.BASE_SUFFIX_URL;
+        DownloadParseResponse downloadParseResponse = new AutoSuggestResponse(this, getContext());
+       /* String jsonString = JsonStorage.getJsonFileData(getContext(), "AutoSuggest" + (new SimpleDateFormat("dd-MM-yyyy").format(new Date())).toString());
+        if (jsonString != null)
         {
             try
             {
-                downloadParseResponse.parseJson( new JSONObject( jsonString ), downloadParseResponse );
+                downloadParseResponse.parseJson(new JSONObject(jsonString), downloadParseResponse);
             }
-            catch ( JSONException e )
+            catch (JSONException e)
             {
                 e.printStackTrace();
             }
         }
         else
-        {
-            DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync( url, downloadParseResponse );
+        {*/
+            DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync(url, downloadParseResponse);
             downloadJSONAsync.execute();
-        }
+  //      }
 
     }
 
-    private void checkInputValidation()
+    private void checkInputValidation(View view)
     {
         String trainName = _edtTrainNumber.getText().toString();
         int count = trainName.length();
@@ -192,9 +245,21 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
         }
         else
         {
+            showProgressDialog(view);
             callApiForData();
         }
 
+    }
+
+    private void showProgressDialog(View view)
+    {
+        waitingProgress = new ProgressDialog(view.getContext());
+        waitingProgress.setCancelable(false);
+        waitingProgress.setMessage("Fetching train information ...");
+        waitingProgress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        waitingProgress.setProgress(0);
+        waitingProgress.setMax(100);
+        waitingProgress.show();
     }
 
     public void showCalender()
@@ -214,6 +279,7 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
 
     private void setSelectedDate()
     {
+        doj = new StringBuilder();
         _year = _calendar.get(Calendar.YEAR);
         _month = _calendar.get(Calendar.MONTH);
         _day = _calendar.get(Calendar.DAY_OF_MONTH);
@@ -235,9 +301,49 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
                         }
                         else
                         {
+                            _month += 1;
+                            doj.append(_selectedDate.getYear());
+                            if (_month < 10)
+                            {
+                                doj.append("0" + _month);
+                            }
+                            else
+                            {
+                                doj.append(_month);
+                            }
+                            if (_day < 10)
+                            {
+                                doj.append("0" + _day);
+                            }
+                            else
+                            {
+                                doj.append(_day);
+                            }
+                            _selectedDOJ = doj.toString();
+                            doj = new StringBuilder();
+                            if (_day < 10)
+                            {
+                                doj.append("0" + _day);
 
-                            _selectedDOJ = _selectedDate.getYear() + "" + "" + Integer.parseInt((_selectedDate.getMonth() + 1) + "") + _selectedDate.getDate() + "";
-                            _txtDate.setText(_selectedDate.getDate() + "/" + Integer.parseInt((_selectedDate.getMonth() + 1) + "") + "/" + _selectedDate.getYear());
+                            }
+                            else
+                            {
+                                doj.append(_day);
+
+                            }
+                            doj.append("-");
+
+                            if (_month < 10)
+                            {
+                                doj.append("0" + _month);
+                            }
+                            else
+                            {
+                                doj.append(_month);
+                            }
+                            doj.append("-");
+                            doj.append(_selectedDate.getYear());
+                            _txtDate.setText(doj.toString());
                         }
                     }
 
@@ -257,42 +363,34 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
 
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-    {
-        trainNumber = _autoCompleteList.get( position ).getCode();
-        hideKeyboardOnResponse();
-    }
-
-    @Override
     public void onDownloadSuccess(DownloadParseResponse downloadParseResponse)
     {
         if (downloadParseResponse.getType() == 200)
         {
             hideKeyboardOnResponse();
+            _autoCompleteList = new ArrayList<>();
             AutoSuggestResponse autoSuggestResponse;
             if (downloadParseResponse instanceof AutoSuggestResponse)
             {
                 autoSuggestResponse = (AutoSuggestResponse) downloadParseResponse;
+                _autoCompleteList.clear();
                 _autoCompleteList = autoSuggestResponse.getAutoSuggestList();
+
                 if (_autoCompleteList != null)
                 {
-                    String[] traincode = new String[_autoCompleteList.size()];
-                    String[] train = new String[_autoCompleteList.size()];
-                    for (int i = 0; i < _autoCompleteList.size(); i++)
-                    {
-                        train[i] = _autoCompleteList.get(i).getName();
-                    }
-                    _autoCompleteAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.select_dialog_item, train);
-                    _edtTrainNumber.setAdapter(_autoCompleteAdapter);
+                    trainNameSuggestList.setVisibility(View.VISIBLE);
+                    _autoCompleteAdapter = new AutoCompleteAdapter( _autoCompleteList);
+                    trainNameSuggestList.setAdapter(_autoCompleteAdapter);
                     stopTextWatcher = true;
                 }
             }
         }
         if (downloadParseResponse.getType() == 500)
         {
+            waitingProgress.dismiss();
             TrainStatusResponse trainStatusResponse;
             ArrayList<TrainStatusVO> trainStatusVOs = null;
-            if (downloadParseResponse instanceof DownloadParseResponse)
+            if (downloadParseResponse instanceof TrainStatusResponse)
             {
                 trainStatusResponse = (TrainStatusResponse) downloadParseResponse;
                 trainStatusVOs = trainStatusResponse.get_trainStatusVOs();
@@ -300,22 +398,29 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
 
             TrainStatusDisplayFragment trainStatusDisplayFragment = new TrainStatusDisplayFragment();
             trainStatusDisplayFragment.setTrainStatusVoList(trainStatusVOs);
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, trainStatusDisplayFragment).commit();
-            Log.v(TAG, "onDownloadSuccess");
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, trainStatusDisplayFragment).addToBackStack(null).commit();
         }
     }
 
+    @Override
+    public void onDownloadFailed(int errorCode, String message)
+
+    {
+        Log.v(TAG, "onDownloadFailed");
+        if(waitingProgress!=null)
+        {
+            waitingProgress.dismiss();
+        }
+        Toast.makeText(getContext() , message, Toast.LENGTH_SHORT).show();
+    }
+
+
     private void hideKeyboardOnResponse()
     {
-        InputMethodManager mgr = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager mgr = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         mgr.hideSoftInputFromInputMethod(_edtTrainNumber.getWindowToken(), 0);
     }
 
-    @Override
-    public void onDownloadFailed()
-    {
-        Log.v(TAG, "onDownloadFailed");
-    }
 
     @Override
     public void onDestroyView()

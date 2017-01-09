@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.droiddevgeeks.railjourney.R;
+import com.droiddevgeeks.railjourney.models.NavigationDrawerVO;
 
 import java.util.List;
 

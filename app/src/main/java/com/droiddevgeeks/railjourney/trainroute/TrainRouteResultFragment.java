@@ -31,19 +31,23 @@ public class TrainRouteResultFragment extends Fragment
     private TextView _txtSourceStation, _txtDestinationStation, _txtTrainRunsOn;
     private ListView _listViewTrainRoute ;
     private TrainRouteAdapter _adapter;
+    private TextView _pageTitle;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         super.onCreateView(inflater, container, savedInstanceState);
-        View trainRouteResult = inflater.inflate( R.layout.train_route_result , container, false);
-        return trainRouteResult;
+        return inflater.inflate( R.layout.train_route_result , container, false);
+
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        _pageTitle = (TextView)getActivity().findViewById(R.id.appName);
+        _pageTitle.setText("Route");
         _txtTrainName = (TextView)view.findViewById( R.id.txtTrainName );
         _txtTrainName.setText( _list.get( 0 ).getTrainName() );
 

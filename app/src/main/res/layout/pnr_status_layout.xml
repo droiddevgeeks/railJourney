@@ -2,8 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <!--android:background="@drawable/listview_row_background">-->
+    android:layout_height="wrap_content"
+    android:background="@drawable/listview_row_background">
 
     <TextView
         android:id="@+id/txtPassengerTitle"
@@ -34,15 +34,14 @@
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
      android:layout_below="@+id/txtPassengerNumber"
-     android:layout_margin="5dp"
-     >
+     android:layout_margin="5dp">
+
      <RelativeLayout
          android:id="@+id/rlCoachInfo"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentEnd="true"
-         android:layout_alignParentRight="true"
-         >
+         android:layout_alignParentRight="true">
          <TextView
              android:id="@+id/txtCoachTitle"
              android:layout_width="wrap_content"
@@ -52,6 +51,7 @@
              android:textSize="18sp"
              />
          <TextView
+             android:id="@+id/txtCoachTitleValue"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="1"
@@ -62,11 +62,12 @@
              android:textStyle="italic"
              />
      </RelativeLayout>
+
      <RelativeLayout
          android:layout_width="match_parent"
          android:layout_height="wrap_content">
 
-         <com.droiddevgeeks.railjourney.utils.CustomTextView
+         <TextView
          android:id="@+id/txtCurrentBookingTitle"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
@@ -76,6 +77,7 @@
          android:layout_marginBottom="10dp"
          />
          <TextView
+             android:id="@+id/txtCurrentBookingValue"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_toRightOf="@+id/txtCurrentBookingTitle"
@@ -94,6 +96,7 @@
              android:layout_below="@id/txtCurrentBookingTitle"
              />
          <TextView
+             android:id="@+id/txtBookngStatusValue"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_toRightOf="@+id/txtBookngStatus"

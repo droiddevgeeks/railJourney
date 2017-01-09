@@ -4,58 +4,97 @@
                 android:layout_height="match_parent"
                 android:background="@color/background_light_white">
 
+
     <RelativeLayout
+        android:id="@+id/rlError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="Please  retry!"/>
+
+        <TextView
+            android:id="@+id/errorRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/errorMessage"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/language_name_background"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Retry"
+            android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+    <LinearLayout
         android:id="@+id/rlPNRCheckLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:visibility="visible"
         android:padding="10dp">
 
-
-        <FrameLayout
-            android:id="@+id/frameEditBoxPNR"
+        <RelativeLayout
+            android:id="@+id/frameEditBoxTrain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtPNR">
+            android:background="@drawable/section_background">
 
-            <AutoCompleteTextView
-                android:id="@+id/edtPRNEnterBox"
+            <EditText
+                android:id="@+id/edtStationName"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/section_background"
-                android:hint="enter train / number"
-                android:textColorHint="@drawable/hint_remove_selector"
-                android:maxLength="10"
-                android:paddingLeft="15dp"
-                android:paddingStart="15dp"
-                android:textCursorDrawable="@null"
-                android:textColor="@color/card_view_text_color"/>
+                android:layout_height="wrap_content"
+                android:hint="@string/fare_train_name_number"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:inputType="textAutoComplete"
+                android:background="@android:color/transparent"
+                android:textColor="@color/card_view_text_color"
+                android:textCursorDrawable="@null"/>
 
             <ImageView
-                android:id="@+id/imgClearPNR"
+                android:id="@+id/imgClearTrain"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:layout_gravity="right|end|center_vertical"
-                android:paddingEnd="10dp"
-                android:paddingRight="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="5dp"
                 android:src="@drawable/cross"
-                android:visibility="invisible"/>
+                android:visibility="visible"/>
 
-        </FrameLayout>
-
-        <Button
-            android:id="@+id/btnTrainRoute"
-            android:layout_width="150dp"
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/stationAutoList"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:textSize="16dp"
-            android:layout_below="@+id/frameEditBoxPNR"
-            android:background="@drawable/custom_button_background"
+            android:visibility="gone"/>
+        <TextView
+            android:id="@+id/btnTrainRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/language_name_background"
             android:text="@string/train_route"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

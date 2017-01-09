@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_light_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/frameEditBoxSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/section_background">
+
+            <EditText
+                android:id="@+id/edtFromStation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/source_station_name_code"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@+id/edtToStation"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:background="@android:color/transparent"
+                android:textColor="@color/card_view_text_color"
+                android:textCursorDrawable="@null"/>
+
+            <ImageView
+                android:id="@+id/imgClearSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="5dp"
+                android:src="@drawable/cross"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/sourceSuggestList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/frameEditBoxDestination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/section_background"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/edtToStation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/destination_station_name_code"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@+id/edtDate"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:background="@android:color/transparent"
+                android:textColor="@color/card_view_text_color"
+                android:textCursorDrawable="@null"/>
+
+
+
+
+            <ImageView
+                android:id="@+id/imgClearDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/cross"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/destinationSuggestList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/frameEditBoxDOJ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/section_background"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/fare_date_of_journey"
+                android:inputType="none"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textSize="16sp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/card_view_text_color"
+                android:textCursorDrawable="@null"/>
+
+            <ImageView
+                android:id="@+id/imgClearDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/calendar"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/btnTrainStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/language_name_background"
+            android:text="Search Train"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+</RelativeLayout>

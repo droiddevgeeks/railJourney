@@ -1,6 +1,8 @@
 package com.droiddevgeeks.railjourney.download;
 
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
+import android.util.Log;
 
 import com.droiddevgeeks.railjourney.interfaces.DownloadParseResponse;
 
@@ -23,11 +25,36 @@ public class DownloadJSONAsync extends AsyncTask<String, Integer, String>
 {
     private String _downloadURL;
     private WeakReference<DownloadParseResponse> _downloadParseResponse;
+    private DownloadJSONAsync downloadJSONAsync;
 
     public DownloadJSONAsync(String url, DownloadParseResponse downloadParseResponse)
     {
         _downloadURL = url;
-        _downloadParseResponse = new WeakReference<>( downloadParseResponse );
+        _downloadParseResponse = new WeakReference<>(downloadParseResponse);
+    }
+
+    @Override
+    protected void onPreExecute()
+    {
+        downloadJSONAsync = this;
+        new CountDownTimer(7000, 7000)
+        {
+            public void onTick(long millisUntilFinished)
+            {
+                // You can monitor the progress here as well by changing the onTick() time
+            }
+
+            public void onFinish()
+            {
+                // stop async task if not in progress
+                if (downloadJSONAsync.getStatus() == AsyncTask.Status.RUNNING)
+                {
+                    downloadJSONAsync.cancel(false);
+                    Log.v("Inside Async pre" , "cancelled");
+                }
+            }
+        }.start();
+        super.onPreExecute();
     }
 
     @Override
@@ -39,6 +66,7 @@ public class DownloadJSONAsync extends AsyncTask<String, Integer, String>
             url = new URL(_downloadURL);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setDoInput(true);
+            httpURLConnection.setConnectTimeout(4000);
             httpURLConnection.connect();
 
             InputStream inputStream = httpURLConnection.getInputStream();
@@ -52,6 +80,7 @@ public class DownloadJSONAsync extends AsyncTask<String, Integer, String>
             res = stringBuilder.toString();
             httpURLConnection.disconnect();
             inputStream.close();
+            Log.v("Inside Async back" , "cancelled");
             return res;
         }
         catch (MalformedURLException e)
@@ -69,13 +98,14 @@ public class DownloadJSONAsync extends AsyncTask<String, Integer, String>
     protected void onPostExecute(String s)
     {
         super.onPostExecute(s);
+        Log.v("Inside Async post" , "cancelled");
         if (s != null)
         {
             try
             {
                 _downloadURL = null;
-                DownloadParseResponse downloadParseResponse =  _downloadParseResponse.get();
-                if( downloadParseResponse != null)
+                DownloadParseResponse downloadParseResponse = _downloadParseResponse.get();
+                if (downloadParseResponse != null)
                 {
                     downloadParseResponse.parseJson(new JSONObject(s), downloadParseResponse);
                 }

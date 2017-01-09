@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:id="@+id/rlError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="Please  retry!"/>
+
+        <TextView
+            android:id="@+id/errorRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/errorMessage"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/language_name_background"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Retry"
+            android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlTrainSeat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    <RelativeLayout
+        android:id="@+id/rlStation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/steel_blue"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtTrainNameHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:padding="5dp"
+                android:text="Train Name"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/txtTrainName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:padding="5dp"
+                android:text="Pushpak Express"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/rlStation">
+
+        <LinearLayout
+            android:id="@+id/currentStationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/steel_blue"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtTrainRouteHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:padding="5dp"
+                android:text="Train Number"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtTrainNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".4"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="12419"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentStationLayout">
+
+            <LinearLayout
+                android:id="@+id/llToFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/FromSource"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="4.5"
+                    android:text="LKO"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="1"
+                    android:text="-->"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/ToDestination"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="Mumbai"
+                    android:textSize="16sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToFrom"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/travelClass"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:text="AC"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/travelQuota"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="GN"
+                    android:textSize="16sp"/>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/rlInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:id="@+id/routeTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/steel_blue"
+            android:padding="5dp"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="5"
+                android:gravity="start|center_vertical"
+                android:text="Station"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:text="Arrival"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/listViewTrainAvail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routeTable"
+            android:entries="@array/travel_class_array"
+            android:scrollbars="none"
+            />
+    </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

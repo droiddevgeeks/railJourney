@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/section_background">
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/edtTrainName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,7 +29,6 @@
                 android:singleLine="true"
                 android:background="@android:color/transparent"
                 android:textColor="@color/card_view_text_color"
-                android:textColorHint="@drawable/hint_remove_selector"
                 android:textCursorDrawable="@null"/>
 
             <ImageView
@@ -44,7 +43,11 @@
                 android:visibility="visible"/>
 
         </RelativeLayout>
-
+        <ListView
+            android:id="@+id/trainNameSuggestList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <RelativeLayout
             android:id="@+id/frameEditBoxSource"
@@ -53,18 +56,17 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/section_background">
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/edtFromStation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/fare_station_name_code"
+                android:hint="@string/source_station_name_code"
                 android:imeOptions="actionNext"
                 android:nextFocusDown="@+id/edtToStation"
                 android:padding="5dp"
                 android:singleLine="true"
                 android:background="@android:color/transparent"
                 android:textColor="@color/card_view_text_color"
-                android:textColorHint="@drawable/hint_remove_selector"
                 android:textCursorDrawable="@null"/>
 
             <ImageView
@@ -79,7 +81,11 @@
                 android:visibility="visible"/>
 
         </RelativeLayout>
-
+        <ListView
+            android:id="@+id/sourceSuggestList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <RelativeLayout
             android:id="@+id/frameEditBoxDestination"
@@ -88,19 +94,21 @@
             android:background="@drawable/section_background"
             android:layout_marginTop="10dp">
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/edtToStation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/fare_station_name_code"
+                android:hint="@string/destination_station_name_code"
                 android:imeOptions="actionNext"
                 android:nextFocusDown="@+id/edtDate"
                 android:padding="5dp"
                 android:singleLine="true"
                 android:background="@android:color/transparent"
                 android:textColor="@color/card_view_text_color"
-                android:textColorHint="@drawable/hint_remove_selector"
                 android:textCursorDrawable="@null"/>
+
+
+
 
             <ImageView
                 android:id="@+id/imgClearDestination"
@@ -115,7 +123,11 @@
                 android:visibility="visible"/>
 
         </RelativeLayout>
-
+        <ListView
+            android:id="@+id/destinationSuggestList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <RelativeLayout
             android:id="@+id/frameEditBoxDOJ"
@@ -135,7 +147,6 @@
                 android:textSize="16sp"
                 android:background="@android:color/transparent"
                 android:textColor="@color/card_view_text_color"
-                android:textColorHint="@drawable/hint_remove_selector"
                 android:textCursorDrawable="@null"/>
 
             <ImageView
@@ -157,7 +168,6 @@
             android:id="@+id/llTravelClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/llDateOfJourney"
             android:layout_marginTop="10dp"
             android:weightSum="10">
 
@@ -195,14 +205,16 @@
             android:prompt="@string/booking_quota"
             android:layout_marginTop="10dp"/>
 
-        <Button
+        <TextView
             android:id="@+id/txtGetFare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_gravity="center"
-            android:padding="5dp"
             android:background="@drawable/language_name_background"
             android:text="@string/fare_get_fare"
             android:textColor="@android:color/white"

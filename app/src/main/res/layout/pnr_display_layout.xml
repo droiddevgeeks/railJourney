@@ -2,136 +2,185 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp">
 
     <RelativeLayout
+        android:id="@+id/rlError"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <TextView
-            android:id="@+id/txtTrainRouteHeader"
-            android:layout_width="match_parent"
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/steel_blue"
-            android:padding="5dp"
-            android:text="Train Route"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="Please  retry!"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/errorRetry"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtTrainRouteHeader"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/txtSourceStation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:text="Lucknow"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:id="@+id/txtDestinationStation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:text="Mumbai Cst"
-                android:textSize="16sp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/txtDestinationStation"
-                android:layout_toRightOf="@+id/txtSourceStation">
-
-                <ImageView
-                    android:id="@+id/imgEngine"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/engine"
-                    />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/imgEngine"
-                    android:src="@drawable/right_arrow"
-                    />
-            </RelativeLayout>
-        </RelativeLayout>
+            android:layout_below="@+id/errorMessage"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/language_name_background"
+            android:padding="10dp"
+            android:text="Please  retry"
+            android:textColor="@android:color/white"/>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        >
-
-        <TextView
-            android:id="@+id/txtYourRouteHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/steel_blue"
-            android:padding="5dp"
-            android:text="Your Journey"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtYourRouteHeader"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/txtPassengerSourceStation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:text="Lucknow"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:id="@+id/txtPassengerDestinationStation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:text="Mumbai Cst"
-                android:textSize="16sp"/>
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@color/steel_blue"
-        android:padding="5dp"
-        android:text="Pnr Status"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        />
-
-    <ListView
-        android:id="@+id/listViewPnrStatus"
+        android:id="@+id/rlInfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:entries="@array/travel_class_array"
-        />
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/rlTrainInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/txtTrainRouteHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/steel_blue"
+                android:padding="5dp"
+                android:text="Train Route"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtTrainRouteHeader"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="12">
+
+                    <TextView
+                        android:id="@+id/txtSourceStation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:gravity="start|center_vertical"
+                        android:text="Lucknow"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/txtTrainNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="17603"/>
+
+                    <TextView
+                        android:id="@+id/txtDestinationStation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:text="Mumbai Cst"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlYourInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlTrainInfo"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/txtYourRouteHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/steel_blue"
+                android:padding="5dp"
+                android:text="Your Journey"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtYourRouteHeader"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="12">
+
+                    <TextView
+                        android:id="@+id/txtPassengerSourceStation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:text="Lucknow"
+                        android:gravity="start|center_vertical"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/txtDateOfJourney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="15 Dec 2016"/>
+
+                    <TextView
+                        android:id="@+id/txtPassengerDestinationStation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:text="Mumbai Cst"
+                        android:gravity="center"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/pnrStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlYourInfo"
+            android:layout_marginBottom="5dp"
+            android:background="@color/steel_blue"
+            android:padding="5dp"
+            android:text="Pnr Status"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <ListView
+            android:id="@+id/listViewPnrStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pnrStatus"
+            android:entries="@array/travel_class_array"
+            />
+    </RelativeLayout>
 </LinearLayout>

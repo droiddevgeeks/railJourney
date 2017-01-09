@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/listview_row_background">
+
+    <TextView
+        android:id="@+id/txtTravelClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AC Chair Car"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/txtTravelClassFare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1250"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:layout_toRightOf="@id/txtTravelClass"
+        android:textSize="16sp"
+        android:layout_margin="5dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/txtTravelClassFare"
+        android:background="@android:color/black"
+        />
+</RelativeLayout>

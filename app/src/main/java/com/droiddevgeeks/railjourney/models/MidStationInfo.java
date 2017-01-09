@@ -10,6 +10,10 @@ public class MidStationInfo
     private String arrivalTime;
     private String deptTime;
     private String distanceFromSource;
+    private String latemin;
+
+
+    private boolean arrived;
 
     public MidStationInfo(String stationName , String arrivalTime , String deptTime , String distanceFromSource)
     {
@@ -17,6 +21,26 @@ public class MidStationInfo
         this.arrivalTime = arrivalTime;
         this.deptTime = deptTime ;
         this.distanceFromSource = distanceFromSource;
+    }
+
+    public MidStationInfo(String stationName , String arrivalTime , String deptTime ,boolean arrived ,String latemin)
+    {
+
+        this.stationName = stationName;
+        this.arrivalTime = arrivalTime;
+        this.deptTime = deptTime ;
+        this.latemin = latemin;
+        this.arrived = arrived;
+    }
+
+    public boolean isArrived()
+    {
+        return arrived;
+    }
+
+    public int getLatemin()
+    {
+        return Integer.valueOf(latemin);
     }
 
     public String getStationName()

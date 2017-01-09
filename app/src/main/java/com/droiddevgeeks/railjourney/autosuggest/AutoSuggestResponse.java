@@ -37,12 +37,12 @@ public class AutoSuggestResponse extends DownloadParseResponse
     public void parseJson(JSONObject jsonObject, DownloadParseResponse downloadParseResponse)
     {
 
-        String todaysDate = (new SimpleDateFormat( "dd-MM-yyyy" ).format( new Date() )).toString();
+       /* String todaysDate = (new SimpleDateFormat( "dd-MM-yyyy" ).format( new Date() )).toString();
         String jsonString = JsonStorage.getJsonFileData( _context, "AutoSuggest"+todaysDate );
         if ( jsonString == null )
         {
             JsonStorage.saveJsonToFile( _context, jsonObject.toString(), "AutoSuggest"+todaysDate );
-        }
+        }*/
         try
         {
             int responseCode = jsonObject.getInt( "response_code" );
@@ -61,13 +61,18 @@ public class AutoSuggestResponse extends DownloadParseResponse
                 }
                 else
                 {
-                    super.iDownloadListener.onDownloadFailed();
+                    super.iDownloadListener.onDownloadFailed(204, "Empty response ,Not able to fetch required data");
                 }
             }
-            else
+            else if( responseCode == 204)
             {
-                super.iDownloadListener.onDownloadFailed();
+                super.iDownloadListener.onDownloadFailed(204, "Empty response ,Not able to fetch required data");
             }
+            else if( responseCode == 403)
+            {
+                super.iDownloadListener.onDownloadFailed(100, "Not able to fetch data, Please try later");
+            }
+
 
         }
         catch ( JSONException e )

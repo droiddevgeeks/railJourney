@@ -6,5 +6,5 @@ package com.droiddevgeeks.railjourney.interfaces;
 public interface IDownloadListener
 {
     void onDownloadSuccess(DownloadParseResponse downloadParseResponse);
-    void onDownloadFailed();
+    void onDownloadFailed(int errorCode , String message);
 }

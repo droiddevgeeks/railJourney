@@ -34,12 +34,29 @@
         <item>2nd Seating</item>
     </string-array>
 
+    <string-array name="travel_class_value">
+        <item>CC</item>
+        <item>1A</item>
+        <item>2A</item>
+        <item>3A</item>
+        <item>AC3</item>
+        <item>SL</item>
+        <item>FC</item>
+        <item>2S</item>
+    </string-array>
+
     <string name="traveller_age">Select age</string>
     <string-array name="traveller_age_array">
         <item>Child(5 to 11)</item>
         <item>Adult ( 12 and above)</item>
         <item>Senior Citizen Female( 58 and above)</item>
-        <item>Senior Citizen Female( 60 and above)</item>
+        <item>Senior Citizen Male( 60 and above)</item>
+    </string-array>
+    <string-array name="traveller_age_value">
+        <item>5</item>
+        <item>16</item>
+        <item>58</item>
+        <item>60</item>
     </string-array>
 
     <string name="booking_quota">Quota</string>
@@ -47,11 +64,36 @@
         <item>General</item>
         <item>Tatkal</item>
         <item>Premium Tatkal</item>
+        <item>Ladies Quota</item>
+        <item>Defence Quota</item>
+        <item>Handicapped Quota</item>
+
     </string-array>
 
-    <string name="english">English</string>
-    <string name="hindi">Hindi</string>
-    <string name="marathi">Marathi</string>
+    <string-array name="booking_quota_value">
+        <item>GN</item>
+        <item>TQ</item>
+        <item>PT</item>
+        <item>LD</item>
+        <item>DF</item>
+        <item>HP</item>
+    </string-array>
+
+    <string-array name="time_range">
+        <item>Within 2 Hours</item>
+        <item>Within 4 Hours</item>
+        <item>Within 6 Hours</item>
+        <item>Within 8 Hours</item>
+        <item>Within 10 Hours</item>
+    </string-array>
+
+    <string-array name="time_range_vlaue">
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+        <item>8</item>
+    </string-array>
 
     <!--train live status-->
     <string name="live_train_status">Get Status</string>
@@ -61,10 +103,12 @@
 
 
     <!--fare string-->
-    <string name="fare_train_name_number">Train No/Name</string>
+    <string name="fare_train_name_number">Train Name</string>
     <string name="fare_source">Source:</string>
     <string name="fare_destination">Destination:</string>
-    <string name="fare_station_name_code">name or code</string>
+    <string name="fare_station_name_code">Station name</string>
+    <string name="source_station_name_code">Source station</string>
+    <string name="destination_station_name_code">Destination station</string>
     <string name="fare_DOJ">DOJ:</string>
     <string name="fare_date_of_journey">dd-mm-yyyy</string>
     <string name="fare_get_fare">Get Fare</string>

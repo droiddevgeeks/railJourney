@@ -121,6 +121,10 @@ public class ReminderPopUpDialogFragment extends DialogFragment implements View.
         {
             Toast.makeText(_alarmView.getContext(), "Cannot set previous date time.", Toast.LENGTH_SHORT).show();
         }
+        else if( _selectedDate.getTime() < (_currentDate.getTime() + 300000) )
+        {
+            Toast.makeText(_alarmView.getContext(), "Please make difference of atleast 5 min", Toast.LENGTH_SHORT).show();
+        }
         else
         {
             Calendar calendar = new GregorianCalendar(_datePicker.getYear(),

@@ -2,28 +2,21 @@ package com.droiddevgeeks.railjourney;
 
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.PersistableBundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.droiddevgeeks.railjourney.fragments.AboutUsPopupDialogFragment;
-import com.droiddevgeeks.railjourney.fragments.ChangeLanguagePopupDialogFragment;
 import com.droiddevgeeks.railjourney.fragments.HelplineFragment;
 import com.droiddevgeeks.railjourney.fragments.HomeScreenFragment;
 import com.droiddevgeeks.railjourney.fragments.ReminderPopUpDialogFragment;
-import com.droiddevgeeks.railjourney.fragments.SeatMapFragment;
 import com.droiddevgeeks.railjourney.navigation_drawer.NavigationDrawerListAdapter;
-import com.droiddevgeeks.railjourney.navigation_drawer.NavigationDrawerVO;
-import com.droiddevgeeks.railjourney.pnr.PNRCheckFragment;
+import com.droiddevgeeks.railjourney.models.NavigationDrawerVO;
 
 import java.util.ArrayList;
 
@@ -73,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onDrawerOpened(View drawerView)
             {
-                _hamburgerIcon.setImageResource(R.drawable.back);
+                _hamburgerIcon.setImageResource(R.drawable.back1);
                 super.onDrawerOpened(drawerView);
             }
 
@@ -91,8 +84,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         listNavigationVos.add(new NavigationDrawerVO(R.drawable.helpline, "HelpLine Number"));
         listNavigationVos.add(new NavigationDrawerVO(R.drawable.reminder, "Set Reminder"));
-        listNavigationVos.add(new NavigationDrawerVO(R.drawable.seatmap, "Seat Map"));
-        listNavigationVos.add(new NavigationDrawerVO(R.drawable.settings, "Settings"));
         listNavigationVos.add(new NavigationDrawerVO(R.drawable.about, "About Us"));
         listNavigationVos.add(new NavigationDrawerVO(R.drawable.close, "Exit"));
 
@@ -129,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void openNavigationDrawer()
     {
-        _hamburgerIcon.setImageResource(R.drawable.back);
+        _hamburgerIcon.setImageResource(R.drawable.back1);
         _drawerLayout.openDrawer(_listViewNavigationDrawer);
     }
 
@@ -154,15 +145,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 openAlarmFragment();
                 break;
             case 2:
-                openSeatMap();
-                break;
-            case 3:
-                openChangeLanguagePopup();
-                break;
-            case 4:
                 openAboutUsPopup();
                 break;
-            case 5:
+            case 3 :
                 closeApp();
                 break;
 
@@ -184,20 +169,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new HelplineFragment()).addToBackStack(null).commit();
     }
 
-    private void openSeatMap()
-    {
-        setDrawerState(false);
-        _hamburgerIcon.setVisibility(View.INVISIBLE);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new SeatMapFragment()).addToBackStack(null).commit();
-    }
-
-    private void openChangeLanguagePopup()
-    {
-
-        FragmentManager fm = getFragmentManager();
-        ChangeLanguagePopupDialogFragment dialogFragment = new ChangeLanguagePopupDialogFragment();
-        dialogFragment.show(fm, "Change Language Fragment");
-    }
 
     private void openAboutUsPopup()
     {

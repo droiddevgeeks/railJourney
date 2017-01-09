@@ -82,9 +82,13 @@ public class TrainRouteResponse extends DownloadParseResponse
                 super.iDownloadListener.onDownloadSuccess( downloadParseResponse );
 
             }
+            else if (responseCode == 403)
+            {
+                super.iDownloadListener.onDownloadFailed(403, "Not able to fetch data, Please try later");
+            }
             else
             {
-                super.iDownloadListener.onDownloadFailed();
+                super.iDownloadListener.onDownloadFailed(204, "Empty response ,Not able to fetch required data");
             }
 
         }

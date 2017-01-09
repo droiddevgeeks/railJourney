@@ -1,21 +1,32 @@
 package com.droiddevgeeks.railjourney.trainroute;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.droiddevgeeks.railjourney.R;
+import com.droiddevgeeks.railjourney.autosuggest.AutoCompleteAdapter;
 import com.droiddevgeeks.railjourney.autosuggest.AutoSuggestResponse;
 import com.droiddevgeeks.railjourney.download.DownloadJSONAsync;
 import com.droiddevgeeks.railjourney.interfaces.DownloadParseResponse;
@@ -23,8 +34,12 @@ import com.droiddevgeeks.railjourney.interfaces.IDownloadListener;
 import com.droiddevgeeks.railjourney.models.AutoCompleteVO;
 import com.droiddevgeeks.railjourney.models.TrainRouteVO;
 import com.droiddevgeeks.railjourney.utils.APIUrls;
+import com.droiddevgeeks.railjourney.utils.Utilities;
 
 import java.util.List;
+import java.util.Locale;
+
+import static android.view.View.GONE;
 
 /**
  * Created by Vampire on 2016-10-15.
@@ -32,126 +47,199 @@ import java.util.List;
 
 public class TrainRouteFragment extends Fragment implements View.OnClickListener, IDownloadListener, AdapterView.OnItemClickListener
 {
-    private Button _trainRoute;
-    private AutoCompleteTextView _txtTrainNameNumber;
+    private TextView _trainRoute;
+    private ImageView clearTrain;
+    private EditText _txtTrainNameNumber;
+    private ListView trainRouteList;
+
     private List<AutoCompleteVO> _autoCompleteList;
-    private ArrayAdapter<String> _autoCompleteAdapter;
-    private boolean stopTextWatcher = false;
+    private AutoCompleteAdapter _autoCompleteAdapter;
 
     private List<TrainRouteVO> _trainRouteList;
-    String trainNumber;
+    private boolean stopTextWatcher = false;
+    private String trainNumber;
+    private TextView _pageTitle;
+    private RelativeLayout rlError;
+    private TextView errorMessage;
+    private TextView errorRetry;
+    private LinearLayout llInfo;
+    private ProgressDialog waitingProgress;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        super.onCreateView( inflater, container, savedInstanceState );
-
-        View trainRoute = inflater.inflate( R.layout.train_route_layout, container, false );
-        return trainRoute;
+        super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.train_route_layout, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
     {
-        super.onViewCreated( view, savedInstanceState );
-        _trainRoute = (Button) view.findViewById( R.id.btnTrainRoute );
-        _trainRoute.setOnClickListener( this );
+        super.onViewCreated(view, savedInstanceState);
+        rlError = (RelativeLayout) view.findViewById(R.id.rlError);
+        errorMessage = (TextView) view.findViewById(R.id.errorMessage);
+        errorRetry = (TextView) view.findViewById(R.id.errorRetry);
+        errorRetry.setOnClickListener(this);
+        llInfo = (LinearLayout) view.findViewById(R.id.rlPNRCheckLayout);
+        _pageTitle = (TextView) getActivity().findViewById(R.id.appName);
+        _pageTitle.setText("Route");
+        _txtTrainNameNumber = (EditText) view.findViewById(R.id.edtStationName);
+        _txtTrainNameNumber.setTextColor(Color.BLACK);
+        _txtTrainNameNumber.addTextChangedListener(txtChecker);
+        _txtTrainNameNumber.setOnKeyListener(new View.OnKeyListener()
+        {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent)
+            {
+                if (i == KeyEvent.KEYCODE_DEL)
+                {
+                    if (_txtTrainNameNumber.getText().length() < 3)
+                    {
+                        trainRouteList.setVisibility(GONE);
+                        stopTextWatcher = false;
+                    }
+                }
+                return false;
+            }
+        });
 
-        _txtTrainNameNumber = (AutoCompleteTextView) view.findViewById( R.id.edtPRNEnterBox );
-        _txtTrainNameNumber.setThreshold( 3 );
-        _txtTrainNameNumber.setTextColor( Color.BLACK );
-        _txtTrainNameNumber.addTextChangedListener( txtChecker );
+        trainRouteList = (ListView) view.findViewById(R.id.stationAutoList);
+        trainRouteList.setOnItemClickListener(this);/*new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                _txtTrainNameNumber.setText(_autoCompleteList.get(i).getName());
+                trainNumber = _autoCompleteList.get(i).getCode();
+                trainRouteList.setVisibility(GONE);
+            }
+        });*/
 
-        _txtTrainNameNumber.setOnItemClickListener( this );
+        clearTrain = (ImageView) view.findViewById(R.id.imgClearTrain);
+        clearTrain.setOnClickListener(this);
 
+        _trainRoute = (TextView) view.findViewById(R.id.btnTrainRoute);
+        _trainRoute.setOnClickListener(this);
 
     }
 
     TextWatcher txtChecker = new TextWatcher()
     {
         @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+        public void beforeTextChanged(CharSequence s, int start, int count, int after)
         {
 
         }
 
         @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+        public void onTextChanged(CharSequence s, int start, int before, int count)
         {
-            if ( _txtTrainNameNumber.getText().length() >= 3 )
+
+            if (count < 3)
             {
-                if(stopTextWatcher)
+                trainRouteList.setVisibility(GONE);
+                stopTextWatcher = false;
+            }
+            if (_txtTrainNameNumber.getText().length() == 3)
+            {
+                if (stopTextWatcher)
                 {
 
                 }
                 else
                 {
-                    callAutoSuggestAPI( _txtTrainNameNumber.getText().toString() );
+                    callAutoSuggestAPI(_txtTrainNameNumber.getText().toString());
                 }
 
             }
-
         }
 
         @Override
-        public void afterTextChanged(Editable editable)
+        public void afterTextChanged(Editable s)
         {
-
+            String text = _txtTrainNameNumber.getText().toString().toLowerCase(Locale.getDefault());
+            if (_autoCompleteAdapter != null)
+            {
+                _autoCompleteAdapter.filter(text);
+            }
         }
     };
 
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
-    {
-        trainNumber = _autoCompleteList.get( i ).getCode();
-    }
-
     private void callTrainRouteAPI(String url)
     {
-
-        DownloadParseResponse downloadParseResponse = new TrainRouteResponse( this );
-        DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync( url, downloadParseResponse );
-        downloadJSONAsync.execute();
+        if (Utilities.isConnectedToInternet(getContext()))
+        {
+            DownloadParseResponse downloadParseResponse = new TrainRouteResponse(this);
+            DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync(url, downloadParseResponse);
+            downloadJSONAsync.execute();
+        }
+        else
+        {
+            this.onDownloadFailed(101, "Please connect to working internet connection");
+        }
     }
 
 
     private void callAutoSuggestAPI(String keyword)
     {
 
-        String url = APIUrls.BASE_PREFIX_URL + APIUrls.AUTOSUGGESTLIST + keyword + APIUrls.BASE_SUFFIX_URL;
-        DownloadParseResponse downloadParseResponse = new AutoSuggestResponse( this , getContext() );
-        DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync( url, downloadParseResponse );
+        String url = APIUrls.BASE_PREFIX_URL + APIUrls.AUTO_SUGGEST_LIST + keyword + APIUrls.BASE_SUFFIX_URL;
+        DownloadParseResponse downloadParseResponse = new AutoSuggestResponse(this, getContext());
+        DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync(url, downloadParseResponse);
         downloadJSONAsync.execute();
+
     }
 
 
     @Override
     public void onClick(View v)
     {
-        switch ( v.getId() )
+        switch (v.getId())
         {
             case R.id.btnTrainRoute:
-                if ( checkInputValidation() )
+                if (checkInputValidation())
                 {
+                    Utilities.hideSoftKeyboard(getContext(), v);
+                    llInfo.setVisibility(GONE);
+                    showProgressDialog(v);
                     String trainRouteURL = APIUrls.BASE_PREFIX_URL + APIUrls.TRAIN_ROUTE + trainNumber + APIUrls.BASE_SUFFIX_URL;
-                    callTrainRouteAPI( trainRouteURL );
+                    callTrainRouteAPI(trainRouteURL);
                 }
                 break;
+            case R.id.imgClearTrain:
+                _txtTrainNameNumber.getText().clear();
+                trainRouteList.setVisibility(GONE);
+                stopTextWatcher = false;
+                break;
+            case R.id.errorRetry:
+                llInfo.setVisibility(View.VISIBLE);
+                rlError.setVisibility(GONE);
 
         }
     }
 
+    private void showProgressDialog(View view)
+    {
+        waitingProgress = new ProgressDialog(view.getContext());
+        waitingProgress.setCancelable(false);
+        waitingProgress.setMessage("Fetching Seats information ...");
+        waitingProgress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        waitingProgress.setProgress(0);
+        waitingProgress.setMax(100);
+        waitingProgress.show();
+    }
+
     private boolean checkInputValidation()
     {
-        if ( _txtTrainNameNumber.getText().toString().length() >= 5 )
+        if (_txtTrainNameNumber.getText().toString().length() >= 5)
         {
             return true;
         }
         else
         {
-            Toast.makeText( getContext(), "Please enter train number or name", Toast.LENGTH_LONG ).show();
+            Toast.makeText(getContext(), "Please enter train number or name", Toast.LENGTH_LONG).show();
         }
         return false;
     }
@@ -159,39 +247,36 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
     @Override
     public void onDownloadSuccess(DownloadParseResponse downloadParseResponse)
     {
-        if ( downloadParseResponse.getType() == 200 )
+
+        if (downloadParseResponse.getType() == 200)
         {
             AutoSuggestResponse autoSuggestResponse;
-            if ( downloadParseResponse instanceof AutoSuggestResponse )
+            if (downloadParseResponse instanceof AutoSuggestResponse)
             {
                 autoSuggestResponse = (AutoSuggestResponse) downloadParseResponse;
                 _autoCompleteList = autoSuggestResponse.getAutoSuggestList();
-                if ( _autoCompleteList != null )
+                if (_autoCompleteList != null)
                 {
-                    String[] traincode = new String[_autoCompleteList.size()];
-                    String[] train = new String[_autoCompleteList.size()];
-                    for ( int i = 0; i < _autoCompleteList.size(); i++ )
-                    {
-                        train[i] = _autoCompleteList.get( i ).getName();
-                    }
-                    _autoCompleteAdapter = new ArrayAdapter<String>( getContext(), android.R.layout.select_dialog_item, train );
-                    _txtTrainNameNumber.setAdapter( _autoCompleteAdapter );
+                    trainRouteList.setVisibility(View.VISIBLE);
+                    _autoCompleteAdapter = new AutoCompleteAdapter(_autoCompleteList);
+                    trainRouteList.setAdapter(_autoCompleteAdapter);
                     stopTextWatcher = true;
                 }
             }
         }
-        else if ( downloadParseResponse.getType() == 600 )
+        else if (downloadParseResponse.getType() == 600)
         {
+            waitingProgress.dismiss();
             TrainRouteResponse trainRouteResponse;
-            if ( downloadParseResponse instanceof TrainRouteResponse )
+            if (downloadParseResponse instanceof TrainRouteResponse)
             {
                 trainRouteResponse = (TrainRouteResponse) downloadParseResponse;
                 _trainRouteList = trainRouteResponse.getTrainRouteList();
-                if ( _trainRouteList != null )
+                if (_trainRouteList != null)
                 {
                     TrainRouteResultFragment trainRouteResultFragment = new TrainRouteResultFragment();
-                    trainRouteResultFragment.setTrainRouteListData( _trainRouteList );
-                    getFragmentManager().beginTransaction().replace( R.id.container, trainRouteResultFragment).addToBackStack( null ).commit();
+                    trainRouteResultFragment.setTrainRouteListData(_trainRouteList);
+                    getFragmentManager().beginTransaction().replace(R.id.container, trainRouteResultFragment).addToBackStack(null).commit();
 
                 }
 
@@ -202,9 +287,33 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onDownloadFailed()
+    public void onDownloadFailed(int errorCode, String message)
     {
+        if (waitingProgress != null)
+        {
+            waitingProgress.dismiss();
+        }
+        if (errorCode == 100)
+        {
+            rlError.setVisibility(View.GONE);
+            llInfo.setVisibility(View.VISIBLE);
+            Toast.makeText(getContext(), "Not able to get data", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            rlError.setVisibility(View.VISIBLE);
+            errorMessage.setText(message);
+            errorRetry.setText("Retry");
+        }
+
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+    {
+        _txtTrainNameNumber.setText(_autoCompleteList.get(i).getName());
+        trainNumber = _autoCompleteList.get(i).getCode();
+        trainRouteList.setVisibility(GONE);
+    }
 }

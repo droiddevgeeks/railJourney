@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/steel_blue"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtTrainNameHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:padding="5dp"
+                android:text="Train Number"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/txtTrainName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:padding="5dp"
+                android:text="Pushpak Express"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:id="@+id/currentStationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/steel_blue"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtTrainRouteHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_weight=".3"
+                android:text="Now At"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtCurrentStation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Station"
+                android:layout_weight=".7"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentStationLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/txtIsArrived"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="3"
+                    android:text="Arrived"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtCurrentStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_weight="7"
+                    android:text="delay status"
+                    android:textSize="16sp"/>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:id="@+id/routeTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/steel_blue"
+            android:padding="5dp"
+            android:weightSum="13">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="4"
+                android:gravity="start|center_vertical"
+                android:text="Station"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="Arrival"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="Dept"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="end|center_vertical"
+                android:text="Arrived"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="end|center_vertical"
+                android:text="Late"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/listViewTrainRoute"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/routeTable"
+            android:scrollbars="none"
+            android:entries="@array/travel_class_array"
+            />
+    </RelativeLayout>
+</LinearLayout>
