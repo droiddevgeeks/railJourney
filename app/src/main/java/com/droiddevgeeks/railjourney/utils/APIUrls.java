@@ -1,7 +1,7 @@
 package com.droiddevgeeks.railjourney.utils;
 
 /**
- * Created by kunal on 09-10-2016.
+ * Created by Vampire on 09-10-2016.
  */
 public class APIUrls
 {
