@@ -228,7 +228,7 @@ public class FareEnquiryFragment extends Fragment implements View.OnClickListene
             String text = trainName.getText().toString().toLowerCase(Locale.getDefault());
             if(_autoCompleteAdapter!=null)
             {
-                _autoCompleteAdapter.filter(text);
+            //    _autoCompleteAdapter.filter(text);
             }
         }
     };
@@ -265,7 +265,7 @@ public class FareEnquiryFragment extends Fragment implements View.OnClickListene
             String text = sourceStation.getText().toString().toLowerCase(Locale.getDefault());
             if(_autoCompleteSourceAdapter!=null)
             {
-                _autoCompleteSourceAdapter.filter(text);
+             //   _autoCompleteSourceAdapter.filter(text);
             }
         }
     };
@@ -304,7 +304,7 @@ public class FareEnquiryFragment extends Fragment implements View.OnClickListene
             String text = destinationStation.getText().toString().toLowerCase(Locale.getDefault());
             if(_autoCompleteDestinationAdapter!=null)
             {
-                _autoCompleteDestinationAdapter.filter(text);
+             //   _autoCompleteDestinationAdapter.filter(text);
             }
         }
     };

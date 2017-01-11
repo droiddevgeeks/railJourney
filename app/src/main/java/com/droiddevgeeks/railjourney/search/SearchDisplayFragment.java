@@ -85,7 +85,6 @@ public class SearchDisplayFragment extends Fragment implements AdapterView.OnIte
 
     private void callTrainAtStationApi(String source, String destination, String doj)
     {
-        //   showProgressDialog(trainListView);
         String url = APIUrls.BASE_PREFIX_URL + APIUrls.TRAIN_BTW_STN + "source/" + source + "/dest/" + destination + "/date/" + doj + APIUrls.BASE_SUFFIX_URL;
         DownloadParseResponse downloadParseResponse = new SearchTrainResponse(this, getContext());
        /* String jsonString = JsonStorage.getJsonFileData(getContext(), "TrainBetween" + (new SimpleDateFormat("dd-MM-yyyy").format(new Date())).toString());

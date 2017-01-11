@@ -116,8 +116,9 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
-                sourceCode = _autoCompleteList.get(i).getCode();
-                sourceStation.setText(_autoCompleteList.get(i).getName());
+                AutoCompleteVO model = (AutoCompleteVO) adapterView.getItemAtPosition(i);
+                sourceCode = model.getCode();
+                sourceStation.setText(model.getName());
                 sourceAutoList.setVisibility(View.GONE);
             }
         });
@@ -147,8 +148,9 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
-                destinationCode = _autoCompleteList.get(i).getCode();
-                destinationStation.setText(_autoCompleteList.get(i).getName());
+                AutoCompleteVO model = (AutoCompleteVO) adapterView.getItemAtPosition(i);
+                destinationCode =model.getCode();
+                destinationStation.setText(model.getName());
                 destinationAutoList.setVisibility(View.GONE);
             }
         });
@@ -200,16 +202,20 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
                 }
 
             }
+            if (count > 3)
+            {
+                String text = sourceStation.getText().toString().toLowerCase(Locale.getDefault());
+                if (_autoCompleteAdapter != null)
+                {
+                    _autoCompleteAdapter.getFilter().filter(text);
+                }
+            }
         }
 
         @Override
         public void afterTextChanged(Editable s)
         {
-            String text = sourceStation.getText().toString().toLowerCase(Locale.getDefault());
-            if(_autoCompleteSourceAdapter!=null)
-            {
-                _autoCompleteSourceAdapter.filter(text);
-            }
+
         }
     };
 
@@ -245,16 +251,19 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
                 }
 
             }
+            if (count > 3)
+            {
+                String text = destinationStation.getText().toString().toLowerCase(Locale.getDefault());
+                if (_autoCompleteAdapter != null)
+                {
+                    _autoCompleteAdapter.getFilter().filter(text);
+                }
+            }
         }
 
         @Override
         public void afterTextChanged(Editable s)
         {
-            String text = destinationStation.getText().toString().toLowerCase(Locale.getDefault());
-            if(_autoCompleteDestinationAdapter!=null)
-            {
-                _autoCompleteDestinationAdapter.filter(text);
-            }
         }
     };
 
@@ -379,10 +388,18 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
         {
             sb.append("0"+day);
         }
+        else
+        {
+            sb.append(day);
+        }
         sb.append("-");
         if(month <10)
         {
             sb.append("0"+month);
+        }
+        else
+        {
+            sb.append(month);
         }
         date = sb.toString();
         sb.append("-");

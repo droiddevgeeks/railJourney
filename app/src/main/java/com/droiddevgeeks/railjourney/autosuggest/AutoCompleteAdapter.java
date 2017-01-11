@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.droiddevgeeks.railjourney.R;
@@ -19,18 +21,19 @@ import java.util.Locale;
  * Created by kishan.maurya on 19-10-2016.
  */
 
-public class AutoCompleteAdapter extends BaseAdapter
+public class AutoCompleteAdapter extends BaseAdapter implements Filterable
 {
 
 
     private List<AutoCompleteVO> list;
     private ArrayList<AutoCompleteVO> arrayList;
+    private AutoSuggestFilter autoSuggestFilter;
 
     public AutoCompleteAdapter(List<AutoCompleteVO> list)
     {
         this.list = list;
-        arrayList = new ArrayList<>();
-        arrayList.addAll(list);
+        this.arrayList = new ArrayList<AutoCompleteVO>();
+        this.arrayList.addAll(list);
     }
 
     @Override
@@ -66,25 +69,69 @@ public class AutoCompleteAdapter extends BaseAdapter
 
     }
 
-    // Filter Class
-    public void filter(String charText)
+    @Override
+    public Filter getFilter()
     {
-        charText = charText.toLowerCase(Locale.getDefault());
-        list.clear();
-        if (charText.length() == 0)
+        if(autoSuggestFilter == null)
         {
-            list.addAll(arrayList);
+            autoSuggestFilter = new AutoSuggestFilter();
         }
-        else
-        {
-            for (AutoCompleteVO autoCompleteVO : arrayList)
-            {
-                if (autoCompleteVO.getName().toLowerCase(Locale.getDefault()).contains(charText))
-                {
-                    list.add(autoCompleteVO);
-                }
-            }
-        }
-        notifyDataSetChanged();
+        return autoSuggestFilter;
     }
+
+    private class AutoSuggestFilter extends Filter
+    {
+
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint)
+        {
+            // Create a FilterResults object
+            FilterResults results = new FilterResults();
+
+            // If the constraint (search string/pattern) is null
+            // or its length is 0, i.e., its empty then
+            // we just set the `values` property to the
+            // original contacts list which contains all of them
+            if (constraint == null || constraint.length() == 0)
+            {
+                results.values = arrayList;
+                results.count = arrayList.size();
+            }
+            else
+            {
+                // Some search constraint has been passed
+                // so let's filter accordingly
+                List<AutoCompleteVO> filteredList = new ArrayList<AutoCompleteVO>();
+
+                // We'll go through all the contacts and see
+                // if they contain the supplied string
+                for (AutoCompleteVO c : arrayList)
+                {
+                    if (c.getName().toLowerCase(Locale.getDefault()).contains(constraint.toString().toLowerCase(Locale.getDefault())))
+                    {
+                        // if `contains` == true then add it
+                        // to our filtered list
+                        filteredList.add(c);
+                    }
+                }
+
+                // Finally set the filtered values and size/count
+                results.values = filteredList;
+                results.count = filteredList.size();
+            }
+
+            // Return our FilterResults object
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results)
+        {
+            list = (List<AutoCompleteVO>) results.values;
+            notifyDataSetChanged();
+        }
+
+    }
+
 }

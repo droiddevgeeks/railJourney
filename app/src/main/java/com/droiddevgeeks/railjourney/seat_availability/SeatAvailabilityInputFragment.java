@@ -278,7 +278,7 @@ public class SeatAvailabilityInputFragment extends Fragment implements View.OnCl
             String text = trainName.getText().toString().toLowerCase(Locale.getDefault());
             if(_autoCompleteAdapter!=null)
             {
-                _autoCompleteAdapter.filter(text);
+             //   _autoCompleteAdapter.filter(text);
             }
         }
     };
@@ -321,7 +321,7 @@ public class SeatAvailabilityInputFragment extends Fragment implements View.OnCl
             String text = sourceStation.getText().toString().toLowerCase(Locale.getDefault());
             if(_autoCompleteSourceAdapter!=null)
             {
-                _autoCompleteSourceAdapter.filter(text);
+             //   _autoCompleteSourceAdapter.filter(text);
             }
         }
     };
@@ -364,7 +364,7 @@ public class SeatAvailabilityInputFragment extends Fragment implements View.OnCl
             String text = destinationStation.getText().toString().toLowerCase(Locale.getDefault());
             if(_autoCompleteDestinationAdapter!=null)
             {
-                _autoCompleteDestinationAdapter.filter(text);
+             //   _autoCompleteDestinationAdapter.filter(text);
             }
         }
     };

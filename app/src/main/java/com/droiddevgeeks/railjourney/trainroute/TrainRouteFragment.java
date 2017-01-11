@@ -153,16 +153,24 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
                 }
 
             }
+            if (count > 3)
+            {
+                String text = _txtTrainNameNumber.getText().toString().toLowerCase(Locale.getDefault());
+                if (_autoCompleteAdapter != null)
+                {
+                    _autoCompleteAdapter.getFilter().filter(text);
+                }
+            }
         }
 
         @Override
         public void afterTextChanged(Editable s)
         {
-            String text = _txtTrainNameNumber.getText().toString().toLowerCase(Locale.getDefault());
+            /*String text = _txtTrainNameNumber.getText().toString().toLowerCase(Locale.getDefault());
             if (_autoCompleteAdapter != null)
             {
                 _autoCompleteAdapter.filter(text);
-            }
+            }*/
         }
     };
 
@@ -312,8 +320,9 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
     {
-        _txtTrainNameNumber.setText(_autoCompleteList.get(i).getName());
-        trainNumber = _autoCompleteList.get(i).getCode();
+        AutoCompleteVO model = (AutoCompleteVO) adapterView.getItemAtPosition(i);
+        _txtTrainNameNumber.setText(model.getName());
+        trainNumber = model.getCode();
         trainRouteList.setVisibility(GONE);
     }
 }

@@ -99,9 +99,10 @@ public class TrainAtStationInputFragment extends Fragment implements View.OnClic
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
+                AutoCompleteVO model = (AutoCompleteVO) adapterView.getItemAtPosition(i);
                 listViewStation.setVisibility(GONE);
-                station.setText(_autoCompleteList.get(i).getName());
-                stationCode = _autoCompleteList.get(i).getCode();
+                station.setText(model.getName());
+                stationCode = model.getCode();
             }
         });
 
@@ -159,16 +160,24 @@ public class TrainAtStationInputFragment extends Fragment implements View.OnClic
                 }
 
             }
+            if (count > 3)
+            {
+                String text = station.getText().toString().toLowerCase(Locale.getDefault());
+                if (_autoCompleteAdapter != null)
+                {
+                    _autoCompleteAdapter.getFilter().filter(text);
+                }
+            }
         }
 
         @Override
         public void afterTextChanged(Editable s)
         {
-            String text = station.getText().toString().toLowerCase(Locale.getDefault());
+            /*String text = station.getText().toString().toLowerCase(Locale.getDefault());
             if(_autoCompleteAdapter!=null)
             {
                 _autoCompleteAdapter.filter(text);
-            }
+            }*/
         }
     };
 
