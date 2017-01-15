@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.droiddevgeeks.railjourney.MainActivity;
 import com.droiddevgeeks.railjourney.R;
 import com.droiddevgeeks.railjourney.canceltrain.CancelTrainResponse;
 import com.droiddevgeeks.railjourney.download.DownloadJSONAsync;
@@ -25,6 +26,8 @@ import com.droiddevgeeks.railjourney.models.CancelledTrainVO;
 import com.droiddevgeeks.railjourney.models.PnrDataVO;
 import com.droiddevgeeks.railjourney.utils.APIUrls;
 import com.droiddevgeeks.railjourney.utils.Utilities;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.List;
 
@@ -40,6 +43,7 @@ public class PNRCheckFragment extends Fragment implements View.OnClickListener
     public EditText _enterPNR;
     private ImageView _clearPNR;
     private TextView _pageTitle;
+    private AdView mAdView;
 
     @Nullable
     @Override
@@ -64,6 +68,18 @@ public class PNRCheckFragment extends Fragment implements View.OnClickListener
         _enterPNR.addTextChangedListener(_textWatcher);
         _checkPNR.setOnClickListener(this);
         _clearPNR.setOnClickListener(this);
+
+        initMobileAds(view);
+    }
+
+    private void initMobileAds(View view)
+    {
+        mAdView = (AdView)view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+               /* .addTestDevice("4d0a3b4bca93c000")
+                .addTestDevice("bb23ad1a6aab7f0")*/
+                .build();
+        mAdView.loadAd(adRequest);
     }
 
     TextWatcher _textWatcher = new TextWatcher()
@@ -95,6 +111,36 @@ public class PNRCheckFragment extends Fragment implements View.OnClickListener
     };
 
     @Override
+    public void onResume()
+    {
+        super.onResume();
+        if (mAdView != null)
+        {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        if (mAdView != null)
+        {
+            mAdView.pause();
+        }
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        if (mAdView != null)
+        {
+            mAdView.destroy();
+        }
+    }
+
+    @Override
     public void onClick(View v)
     {
         switch (v.getId())
@@ -103,6 +149,7 @@ public class PNRCheckFragment extends Fragment implements View.OnClickListener
                 clearPNR();
                 break;
             case R.id.txtCheckPNR:
+                ((MainActivity)getActivity()).setPnrCheck();
                 checkPNR(v);
                 break;
         }

@@ -115,4 +115,14 @@
     <string name="fare_travel_class">Class:</string>
     <string name="fare_age">Age:</string>
     <string name="fare_booking_quota">Quota:</string>
+
+    <!--mobile ads-->
+    <string name="title_activity_second_activiy">Interstitial</string>
+    <string name="msg_welcome">Welcome to Admob. Click on the below button to launch the Interstitial ad.</string>
+    <string name="btn_fullscreen_ad">Show Fullscreen Ad</string>
+
+    <!-- AdMob ad unit IDs -->
+    <string name="banner_home_footer">ca-app-pub-2830547288515835/6067869703</string>
+    <string name="interstitial_full_screen">ca-app-pub-2830547288515835/6868448500</string>
+
 </resources>

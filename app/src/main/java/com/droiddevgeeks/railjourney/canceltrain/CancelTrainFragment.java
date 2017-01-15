@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.droiddevgeeks.railjourney.MainActivity;
 import com.droiddevgeeks.railjourney.R;
 import com.droiddevgeeks.railjourney.download.DownloadJSONAsync;
 import com.droiddevgeeks.railjourney.interfaces.DownloadParseResponse;
@@ -162,7 +163,9 @@ public class CancelTrainFragment extends Fragment implements IDownloadListener, 
     {
         switch (view.getId())
         {
+
             case R.id.txtRetry:
+                ((MainActivity)getActivity()).setCancelCheck();
                 if(_retry.getText().toString().equalsIgnoreCase("Back"))
                 {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -170,6 +173,7 @@ public class CancelTrainFragment extends Fragment implements IDownloadListener, 
                 }
                 else
                 {
+
                     if (Utilities.isConnectedToInternet(getContext()))
                     {
                         showProgressDialog(view);

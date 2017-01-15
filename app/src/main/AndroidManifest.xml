@@ -4,9 +4,19 @@
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission
+        android:name="com.google.android.c2dm.permission.RECEIVE"/>
+
+    <permission
+        android:name="com.droiddevgeeks.railjourney.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
+
+    <uses-permission
+        android:name="com.droiddevgeeks.railjourney.permission.C2D_MESSAGE"/>
 
     <application
         android:allowBackup="true"
@@ -17,19 +27,39 @@
 
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:launchMode="singleTop">
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
+        <activity android:name=".AdsActivity"
+            android:label="@string/title_activity_second_activiy"
+            android:theme="@style/AppTheme">
+        </activity>
 
-        <receiver
-            android:name=".receiver.AlarmReceiver"
-            android:process=":remote"/>
-    </application>
 
-</manifest>
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version"/>
+    <!--Include the AdActivity configChanges and theme. -->
+    <activity
+        android:name="com.google.android.gms.ads.AdActivity"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+        android:theme="@android:style/Theme.Translucent"/>
+
+    <service android:name=".notification.MyFirebaseMessagingService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+        </intent-filter>
+    </service>
+
+    <receiver
+        android:name=".receiver.AlarmReceiver"
+        android:process=":remote"/>
+</application>
+
+    </manifest>

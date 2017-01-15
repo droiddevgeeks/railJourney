@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.droiddevgeeks.railjourney.MainActivity;
 import com.droiddevgeeks.railjourney.R;
 import com.droiddevgeeks.railjourney.autosuggest.AutoCompleteAdapter;
 import com.droiddevgeeks.railjourney.autosuggest.AutoSuggestStationResponse;
@@ -30,6 +31,8 @@ import com.droiddevgeeks.railjourney.interfaces.IDownloadListener;
 import com.droiddevgeeks.railjourney.memory.JsonStorage;
 import com.droiddevgeeks.railjourney.models.AutoCompleteVO;
 import com.droiddevgeeks.railjourney.utils.APIUrls;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,6 +62,8 @@ public class TrainAtStationInputFragment extends Fragment implements View.OnClic
     private String time;
     private String stationCode;
     private TextView _pageTitle;
+
+    private AdView mAdView;
 
     @Nullable
     @Override
@@ -137,7 +142,50 @@ public class TrainAtStationInputFragment extends Fragment implements View.OnClic
         clearTextImage.setOnClickListener(this);
         trainAtStation.setOnClickListener(this);
 
+        initMobileAds(view);
+
     }
+
+    private void initMobileAds(View view)
+    {
+        mAdView = (AdView)view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                /*.addTestDevice("4d0a3b4bca93c000")
+                .addTestDevice("bb23ad1a6aab7f0")*/
+                .build();
+        mAdView.loadAd(adRequest);
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        if (mAdView != null)
+        {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        if (mAdView != null)
+        {
+            mAdView.pause();
+        }
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        if (mAdView != null)
+        {
+            mAdView.destroy();
+        }
+    }
+
 
     TextWatcher _textStationWatcher = new TextWatcher()
     {
@@ -225,6 +273,7 @@ public class TrainAtStationInputFragment extends Fragment implements View.OnClic
             case R.id.btnTrainStatus:
                 if(validateInput())
                 {
+                    ((MainActivity)getActivity()).setAtstationCheck();
                     TrainAtStationResultFragment trainAtStationResultFragment = new TrainAtStationResultFragment();
                     trainAtStationResultFragment.setInputDataForApi(stationCode,time);
                     getFragmentManager().beginTransaction().replace(R.id.container, trainAtStationResultFragment).addToBackStack(null).commit();

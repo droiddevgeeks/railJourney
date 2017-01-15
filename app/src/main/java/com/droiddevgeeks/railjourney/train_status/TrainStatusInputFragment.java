@@ -29,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.droiddevgeeks.railjourney.MainActivity;
 import com.droiddevgeeks.railjourney.R;
 import com.droiddevgeeks.railjourney.autosuggest.AutoCompleteAdapter;
 import com.droiddevgeeks.railjourney.autosuggest.AutoSuggestResponse;
@@ -39,6 +40,8 @@ import com.droiddevgeeks.railjourney.memory.JsonStorage;
 import com.droiddevgeeks.railjourney.models.AutoCompleteVO;
 import com.droiddevgeeks.railjourney.models.TrainStatusVO;
 import com.droiddevgeeks.railjourney.utils.APIUrls;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,6 +78,8 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
     String trainNumber;
     private ProgressDialog waitingProgress;
     private TextView _pageTitle;
+
+    private AdView mAdView;
 
     @Nullable
     @Override
@@ -139,7 +144,50 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
 
         _getStatus = (TextView) view.findViewById(R.id.btnTrainStatus);
         _getStatus.setOnClickListener(this);
+
+        initMobileAds(view);
     }
+
+    private void initMobileAds(View view)
+    {
+        mAdView = (AdView)view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+               /* .addTestDevice("4d0a3b4bca93c000")
+                .addTestDevice("bb23ad1a6aab7f0")*/
+                .build();
+        mAdView.loadAd(adRequest);
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        if (mAdView != null)
+        {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        if (mAdView != null)
+        {
+            mAdView.pause();
+        }
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        if (mAdView != null)
+        {
+            mAdView.destroy();
+        }
+    }
+
 
     @Override
     public void onClick(View v)
@@ -156,6 +204,7 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
                 clearTrainName();
                 break;
             case R.id.btnTrainStatus:
+                ((MainActivity)getActivity()).setStatusCheck();
                 checkInputValidation(v);
                 break;
         }
