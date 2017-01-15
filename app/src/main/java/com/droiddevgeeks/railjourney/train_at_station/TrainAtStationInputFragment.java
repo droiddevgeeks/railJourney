@@ -88,6 +88,14 @@ public class TrainAtStationInputFragment extends Fragment implements View.OnClic
                         listViewStation.setVisibility(GONE);
                         stopTextWatcher = false;
                     }
+                    else
+                    {
+                        String text = station.getText().toString();
+                        if (_autoCompleteAdapter != null)
+                        {
+                            _autoCompleteAdapter.getFilter().filter(text);
+                        }
+                    }
                 }
                 return false;
             }
@@ -173,11 +181,11 @@ public class TrainAtStationInputFragment extends Fragment implements View.OnClic
         @Override
         public void afterTextChanged(Editable s)
         {
-            /*String text = station.getText().toString().toLowerCase(Locale.getDefault());
-            if(_autoCompleteAdapter!=null)
+            String text = s.toString().trim();
+            if (_autoCompleteAdapter != null)
             {
-                _autoCompleteAdapter.filter(text);
-            }*/
+                _autoCompleteAdapter.getFilter().filter(text);
+            }
         }
     };
 

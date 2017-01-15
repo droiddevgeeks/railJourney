@@ -50,7 +50,7 @@ import static android.view.View.GONE;
  * Created by kunal.sale on 10/20/2016.
  */
 
-public class SearchInputFragment extends Fragment implements  View.OnClickListener, IDownloadListener, DatePickerDialog.OnDateSetListener
+public class SearchInputFragment extends Fragment implements View.OnClickListener, IDownloadListener, DatePickerDialog.OnDateSetListener
 {
     private EditText sourceStation;
     private EditText destinationStation;
@@ -73,7 +73,6 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
     private boolean stopDestinationWatcher = false;
 
     private List<AutoCompleteVO> _autoCompleteList;
-    private AutoCompleteAdapter _autoCompleteAdapter;
     private AutoCompleteAdapter _autoCompleteSourceAdapter;
     private AutoCompleteAdapter _autoCompleteDestinationAdapter;
 
@@ -89,7 +88,7 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        _pageTitle = (TextView)getActivity().findViewById(R.id.appName);
+        _pageTitle = (TextView) getActivity().findViewById(R.id.appName);
         _pageTitle.setText("Search");
         sourceStation = (EditText) view.findViewById(R.id.edtFromStation);
         sourceStation.addTextChangedListener(_textSourceWatcher);
@@ -100,11 +99,21 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
             {
                 if (i == KeyEvent.KEYCODE_DEL)
                 {
-                    if(sourceStation.getText().length()<3)
+                    if (sourceStation.getText().length() < 3)
                     {
                         sourceAutoList.setVisibility(GONE);
                         stopSourceWatcher = false;
                     }
+                    else
+                    {
+                        String text = sourceStation.getText().toString();
+                        if (_autoCompleteSourceAdapter != null)
+                        {
+                            _autoCompleteSourceAdapter.getFilter().filter(text);
+                        }
+                    }
+
+
                 }
                 return false;
             }
@@ -132,10 +141,18 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
             {
                 if (i == KeyEvent.KEYCODE_DEL)
                 {
-                    if(destinationStation.getText().length()<3)
+                    if (destinationStation.getText().length() < 3)
                     {
                         destinationAutoList.setVisibility(GONE);
                         stopDestinationWatcher = false;
+                    }
+                    else
+                    {
+                        String text = destinationStation.getText().toString();
+                        if (_autoCompleteDestinationAdapter != null)
+                        {
+                            _autoCompleteDestinationAdapter.getFilter().filter(text);
+                        }
                     }
                 }
                 return false;
@@ -149,7 +166,7 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
                 AutoCompleteVO model = (AutoCompleteVO) adapterView.getItemAtPosition(i);
-                destinationCode =model.getCode();
+                destinationCode = model.getCode();
                 destinationStation.setText(model.getName());
                 destinationAutoList.setVisibility(View.GONE);
             }
@@ -183,7 +200,7 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
         public void onTextChanged(CharSequence s, int start, int before, int count)
         {
 
-            if(count < 3)
+            if (count < 3)
             {
                 sourceAutoList.setVisibility(GONE);
                 stopSourceWatcher = false;
@@ -205,9 +222,9 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
             if (count > 3)
             {
                 String text = sourceStation.getText().toString().toLowerCase(Locale.getDefault());
-                if (_autoCompleteAdapter != null)
+                if (_autoCompleteSourceAdapter != null)
                 {
-                    _autoCompleteAdapter.getFilter().filter(text);
+                    _autoCompleteSourceAdapter.getFilter().filter(text);
                 }
             }
         }
@@ -215,7 +232,11 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
         @Override
         public void afterTextChanged(Editable s)
         {
-
+            String text = s.toString().trim();
+            if (_autoCompleteSourceAdapter != null)
+            {
+                _autoCompleteSourceAdapter.getFilter().filter(text);
+            }
         }
     };
 
@@ -231,7 +252,7 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
         public void onTextChanged(CharSequence s, int start, int before, int count)
         {
 
-            if(count < 3)
+            if (count < 3)
             {
                 destinationAutoList.setVisibility(GONE);
                 stopDestinationWatcher = false;
@@ -254,9 +275,9 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
             if (count > 3)
             {
                 String text = destinationStation.getText().toString().toLowerCase(Locale.getDefault());
-                if (_autoCompleteAdapter != null)
+                if (_autoCompleteDestinationAdapter != null)
                 {
-                    _autoCompleteAdapter.getFilter().filter(text);
+                    _autoCompleteDestinationAdapter.getFilter().filter(text);
                 }
             }
         }
@@ -264,6 +285,11 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
         @Override
         public void afterTextChanged(Editable s)
         {
+            String text = s.toString().trim();
+            if (_autoCompleteDestinationAdapter != null)
+            {
+                _autoCompleteDestinationAdapter.getFilter().filter(text);
+            }
         }
     };
 
@@ -285,9 +311,9 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
         }
         else
         {*/
-            DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync(url, downloadParseResponse);
-            downloadJSONAsync.execute();
-       // }
+        DownloadJSONAsync downloadJSONAsync = new DownloadJSONAsync(url, downloadParseResponse);
+        downloadJSONAsync.execute();
+        // }
 
     }
 
@@ -324,8 +350,8 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
         {
 
             SearchDisplayFragment searchDisplayFragment = new SearchDisplayFragment();
-            searchDisplayFragment.setInputDataForApi(sourceCode, destinationCode,""+date);
-            getActivity().getSupportFragmentManager().beginTransaction().replace( R.id.container, searchDisplayFragment).addToBackStack(null).commit();
+            searchDisplayFragment.setInputDataForApi(sourceCode, destinationCode, "" + date);
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, searchDisplayFragment).addToBackStack(null).commit();
         }
         else
         {
@@ -384,18 +410,18 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
         month = i1 + 1;
         day = i2;
 
-        if(day < 10)
+        if (day < 10)
         {
-            sb.append("0"+day);
+            sb.append("0" + day);
         }
         else
         {
             sb.append(day);
         }
         sb.append("-");
-        if(month <10)
+        if (month < 10)
         {
-            sb.append("0"+month);
+            sb.append("0" + month);
         }
         else
         {
@@ -425,7 +451,7 @@ public class SearchInputFragment extends Fragment implements  View.OnClickListen
                     if (isSource)
                     {
                         sourceAutoList.setVisibility(View.VISIBLE);
-                        _autoCompleteSourceAdapter = new AutoCompleteAdapter( _autoCompleteList);
+                        _autoCompleteSourceAdapter = new AutoCompleteAdapter(_autoCompleteList);
                         sourceAutoList.setAdapter(_autoCompleteSourceAdapter);
                         stopSourceWatcher = true;
                         isSource = false;

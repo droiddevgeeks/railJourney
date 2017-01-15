@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1040998140721",
+    "firebase_url": "https://railjourney-d3030.firebaseio.com",
+    "project_id": "railjourney-d3030",
+    "storage_bucket": "railjourney-d3030.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040998140721:android:da9971a03db41f8a",
+        "android_client_info": {
+          "package_name": "com.droiddevgeeks.railjourney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040998140721-tkd5d1btbmsh6a3h0qn7s516e70uocd6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.droiddevgeeks.railjourney",
+            "certificate_hash": "8BE699889002B9DE46F66704356F88A832F9C10A"
+          }
+        },
+        {
+          "client_id": "1040998140721-mtq6bprfji42q2m4vcivr2i8qjaojj16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_gpCaBrcBLfvDmqTLBnzU4RmPLjSq2Ms"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040998140721-mtq6bprfji42q2m4vcivr2i8qjaojj16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -99,6 +99,14 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
                         trainRouteList.setVisibility(GONE);
                         stopTextWatcher = false;
                     }
+                    else
+                    {
+                        String text = _txtTrainNameNumber.getText().toString();
+                        if (_autoCompleteAdapter != null)
+                        {
+                            _autoCompleteAdapter.getFilter().filter(text);
+                        }
+                    }
                 }
                 return false;
             }
@@ -166,11 +174,11 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
         @Override
         public void afterTextChanged(Editable s)
         {
-            /*String text = _txtTrainNameNumber.getText().toString().toLowerCase(Locale.getDefault());
+            String text = s.toString().trim();
             if (_autoCompleteAdapter != null)
             {
-                _autoCompleteAdapter.filter(text);
-            }*/
+                _autoCompleteAdapter.getFilter().filter(text);
+            }
         }
     };
 

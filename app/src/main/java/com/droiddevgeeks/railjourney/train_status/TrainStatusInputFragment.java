@@ -104,6 +104,14 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
                         trainNameSuggestList.setVisibility(GONE);
                         stopTextWatcher = false;
                     }
+                    else
+                    {
+                        String text = _edtTrainNumber.getText().toString();
+                        if (_autoCompleteAdapter != null)
+                        {
+                            _autoCompleteAdapter.getFilter().filter(text);
+                        }
+                    }
                 }
                 return false;
             }
@@ -211,6 +219,11 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
             {
                 _imgClearTrain.setVisibility(View.INVISIBLE);
                 trainNameSuggestList.setVisibility(GONE);
+            }
+            String text = s.toString().trim();
+            if (_autoCompleteAdapter != null)
+            {
+                _autoCompleteAdapter.getFilter().filter(text);
             }
 
 

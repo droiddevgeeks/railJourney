@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             case 2:
                 openAboutUsPopup();
                 break;
-            case 3 :
+            case 3:
                 closeApp();
                 break;
 
