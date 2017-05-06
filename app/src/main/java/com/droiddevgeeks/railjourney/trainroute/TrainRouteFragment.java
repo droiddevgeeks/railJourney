@@ -1,7 +1,6 @@
 package com.droiddevgeeks.railjourney.trainroute;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,11 +11,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,7 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.droiddevgeeks.railjourney.MainActivity;
 import com.droiddevgeeks.railjourney.R;
 import com.droiddevgeeks.railjourney.autosuggest.AutoCompleteAdapter;
 import com.droiddevgeeks.railjourney.autosuggest.AutoSuggestResponse;
@@ -89,6 +83,7 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
         llInfo = (LinearLayout) view.findViewById(R.id.rlPNRCheckLayout);
         _pageTitle = (TextView) getActivity().findViewById(R.id.appName);
         _pageTitle.setText("Route");
+
         _txtTrainNameNumber = (EditText) view.findViewById(R.id.edtStationName);
         _txtTrainNameNumber.setTextColor(Color.BLACK);
         _txtTrainNameNumber.addTextChangedListener(txtChecker);
@@ -264,11 +259,11 @@ public class TrainRouteFragment extends Fragment implements View.OnClickListener
         switch (v.getId())
         {
             case R.id.btnTrainRoute:
-                ((MainActivity)getActivity()).setRouteCheck();
+           //     ((MainActivity)getActivity()).setRouteCheck();
                 if (checkInputValidation())
                 {
                     Utilities.hideSoftKeyboard(getContext(), v);
-                    llInfo.setVisibility(GONE);
+                //    llInfo.setVisibility(GONE);
                     showProgressDialog(v);
                     String trainRouteURL = APIUrls.BASE_PREFIX_URL + APIUrls.TRAIN_ROUTE + trainNumber + APIUrls.BASE_SUFFIX_URL;
                     callTrainRouteAPI(trainRouteURL);

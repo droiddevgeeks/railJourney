@@ -16,7 +16,7 @@ public class APIUrls
     public static final String TRAIN_BTW_STN = "between/";
     public static final String FARE_ENQUIRY = "fare/";
     public static final String SEAT_AVAIL = "check_seat/";
-    public static final String CANCELLED_TRAIN = "pnr_status/pnr/";
+    public static final String CANCELLED_TRAIN = "cancelled/date/";
     public static final String TRAIN_AT_STATION = "arrivals/";
     public static final String AUTO_SUGGEST_LIST = "suggest_train/trains/";
     public static final String AUTO_SUGGEST_STATION = "suggest_station/name/";

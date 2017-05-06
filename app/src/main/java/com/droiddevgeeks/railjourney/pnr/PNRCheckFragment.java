@@ -149,7 +149,7 @@ public class PNRCheckFragment extends Fragment implements View.OnClickListener
                 clearPNR();
                 break;
             case R.id.txtCheckPNR:
-                ((MainActivity)getActivity()).setPnrCheck();
+              //  ((MainActivity)getActivity()).setPnrCheck();
                 checkPNR(v);
                 break;
         }

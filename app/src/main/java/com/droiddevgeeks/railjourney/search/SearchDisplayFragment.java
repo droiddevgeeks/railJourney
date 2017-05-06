@@ -31,7 +31,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by kunal.sale on 10/20/2016.
+ * Created by Vampire on 10/20/2016.
  */
 
 public class SearchDisplayFragment extends Fragment implements AdapterView.OnItemClickListener, IDownloadListener

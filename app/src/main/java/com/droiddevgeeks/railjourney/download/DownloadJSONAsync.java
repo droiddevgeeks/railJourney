@@ -19,17 +19,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by kunal on 10-10-2016.
+ * Created by Vampire on 10-10-2016.
  */
 public class DownloadJSONAsync extends AsyncTask<String, Integer, String>
 {
     private String _downloadURL;
-    private WeakReference<DownloadParseResponse> _downloadParseResponse;
+    private DownloadParseResponse _downloadParseResponse;
 
     public DownloadJSONAsync(String url, DownloadParseResponse downloadParseResponse)
     {
         _downloadURL = url;
-        _downloadParseResponse = new WeakReference<>(downloadParseResponse);
+        _downloadParseResponse = downloadParseResponse;
     }
 
     @Override
@@ -82,10 +82,9 @@ public class DownloadJSONAsync extends AsyncTask<String, Integer, String>
             try
             {
                 _downloadURL = null;
-                DownloadParseResponse downloadParseResponse = _downloadParseResponse.get();
-                if (downloadParseResponse != null)
+                if (_downloadParseResponse != null)
                 {
-                    downloadParseResponse.parseJson(new JSONObject(s), downloadParseResponse);
+                    _downloadParseResponse.parseJson(new JSONObject(s), _downloadParseResponse);
                 }
                 _downloadParseResponse = null;
             }

@@ -64,7 +64,7 @@ public class AutoCompleteAdapter extends BaseAdapter implements Filterable
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.auto_complete_layout, viewGroup, false);
         }
         autoSuggestText = (TextView) view.findViewById(R.id.autoSuggestText);
-        autoSuggestText.setText(list.get(i).getName());
+        autoSuggestText.setText(list.get(i).getName() + " , "+ list.get(i).getCode());
         return view;
 
     }

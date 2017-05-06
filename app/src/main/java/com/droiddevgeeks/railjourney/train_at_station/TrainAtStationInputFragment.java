@@ -273,7 +273,7 @@ public class TrainAtStationInputFragment extends Fragment implements View.OnClic
             case R.id.btnTrainStatus:
                 if(validateInput())
                 {
-                    ((MainActivity)getActivity()).setAtstationCheck();
+               //     ((MainActivity)getActivity()).setAtstationCheck();
                     TrainAtStationResultFragment trainAtStationResultFragment = new TrainAtStationResultFragment();
                     trainAtStationResultFragment.setInputDataForApi(stationCode,time);
                     getFragmentManager().beginTransaction().replace(R.id.container, trainAtStationResultFragment).addToBackStack(null).commit();

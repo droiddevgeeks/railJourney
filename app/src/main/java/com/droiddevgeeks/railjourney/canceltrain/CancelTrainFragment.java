@@ -91,7 +91,7 @@ public class CancelTrainFragment extends Fragment implements IDownloadListener, 
 
     private void callApiForData()
     {
-        String url = APIUrls.BASE_PREFIX_URL + "cancelled/date/" + getTodayDate() + APIUrls.BASE_SUFFIX_URL;
+        String url = APIUrls.BASE_PREFIX_URL + APIUrls.CANCELLED_TRAIN + getTodayDate() + APIUrls.BASE_SUFFIX_URL;
         DownloadParseResponse downloadParseResponse = new CancelTrainResponse(this, getContext());
 
         //To prevent calling cancel train api again and again. it only calls once in day. So we are storing in JSON.
@@ -148,7 +148,10 @@ public class CancelTrainFragment extends Fragment implements IDownloadListener, 
     @Override
     public void onDownloadFailed(int errorCode, String message)
     {
+        if(waitingProgress !=null)
+        {
         waitingProgress.dismiss();
+        }
         if (errorCode == 204)
         {
             _retry.setText("Back");
@@ -165,7 +168,7 @@ public class CancelTrainFragment extends Fragment implements IDownloadListener, 
         {
 
             case R.id.txtRetry:
-                ((MainActivity)getActivity()).setCancelCheck();
+         //       ((MainActivity)getActivity()).setCancelCheck();
                 if(_retry.getText().toString().equalsIgnoreCase("Back"))
                 {
                     FragmentManager fm = getActivity().getSupportFragmentManager();

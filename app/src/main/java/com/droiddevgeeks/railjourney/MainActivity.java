@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ImageView _hamburgerIcon;
     private ImageView _imgSetReminder;
     private ActionBarDrawerToggle _drawerToggle;
-    public int pnr, search, status, route, atstation, cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -203,30 +202,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    public void setPnrCheck()
-    {
-        pnr = 1;
-    }
 
-    public void setStatusCheck()
-    {
-        status = 1;
-    }
-
-    public void setRouteCheck()
-    {
-        route = 1;
-    }
-
-    public void setCancelCheck()
-    {
-        cancel = 1;
-    }
-
-    public void setAtstationCheck()
-    {
-        atstation = 1;
-    }
 
 
     @Override
@@ -239,41 +215,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         {
             _drawerLayout.closeDrawer(_listViewNavigationDrawer);
         }
-       /* else if (pnr == 1)
-        {
-            Intent adsIntent = new Intent(this, AdsActivity.class);
-            startActivity(adsIntent);
-            pnr = 0;
-
-        }*/
-        /*else if (route == 1)
-        {
-            Intent adsIntent = new Intent(this, AdsActivity.class);
-            startActivity(adsIntent);
-            route = 0;
-
-        }
-        else if (status == 1)
-        {
-            Intent adsIntent = new Intent(this, AdsActivity.class);
-            startActivity(adsIntent);
-            status = 0;
-
-        }
-        else if (atstation == 1)
-        {
-            Intent adsIntent = new Intent(this, AdsActivity.class);
-            startActivity(adsIntent);
-            atstation = 0;
-
-        }
-        else if (cancel == 1)
-        {
-            Intent adsIntent = new Intent(this, AdsActivity.class);
-            startActivity(adsIntent);
-            cancel = 0;
-
-        }*/
         else
         {
             super.onBackPressed();

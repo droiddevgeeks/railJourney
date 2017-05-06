@@ -204,7 +204,7 @@ public class TrainStatusInputFragment extends Fragment implements View.OnClickLi
                 clearTrainName();
                 break;
             case R.id.btnTrainStatus:
-                ((MainActivity)getActivity()).setStatusCheck();
+            //    ((MainActivity)getActivity()).setStatusCheck();
                 checkInputValidation(v);
                 break;
         }
