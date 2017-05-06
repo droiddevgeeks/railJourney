@@ -78,8 +78,6 @@ public class SearchInputFragment extends Fragment implements View.OnClickListene
     private AutoCompleteAdapter _autoCompleteSourceAdapter;
     private AutoCompleteAdapter _autoCompleteDestinationAdapter;
 
-    private AdView mAdView;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -189,49 +187,25 @@ public class SearchInputFragment extends Fragment implements View.OnClickListene
         getTrain = (TextView) view.findViewById(R.id.btnTrainStatus);
         getTrain.setOnClickListener(this);
 
-        initMobileAds(view);
-
-
-    }
-
-    private void initMobileAds(View view)
-    {
-        mAdView = (AdView)view.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-               /* .addTestDevice("4d0a3b4bca93c000")
-                .addTestDevice("bb23ad1a6aab7f0")*/
-                .build();
-        mAdView.loadAd(adRequest);
     }
 
     @Override
     public void onResume()
     {
         super.onResume();
-        if (mAdView != null)
-        {
-            mAdView.resume();
-        }
     }
 
     @Override
     public void onPause()
     {
         super.onPause();
-        if (mAdView != null)
-        {
-            mAdView.pause();
-        }
     }
 
     @Override
     public void onDestroy()
     {
         super.onDestroy();
-        if (mAdView != null)
-        {
-            mAdView.destroy();
-        }
+
     }
 
     TextWatcher _textSourceWatcher = new TextWatcher()
