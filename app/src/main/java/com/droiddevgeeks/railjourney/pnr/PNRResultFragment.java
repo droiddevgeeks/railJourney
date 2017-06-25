@@ -14,20 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.droiddevgeeks.railjourney.R;
-import com.droiddevgeeks.railjourney.canceltrain.CancelTrainResponse;
 import com.droiddevgeeks.railjourney.download.DownloadJSONAsync;
-import com.droiddevgeeks.railjourney.fragments.HomeScreenFragment;
 import com.droiddevgeeks.railjourney.interfaces.DownloadParseResponse;
 import com.droiddevgeeks.railjourney.interfaces.IDownloadListener;
-import com.droiddevgeeks.railjourney.memory.JsonStorage;
 import com.droiddevgeeks.railjourney.models.PnrDataVO;
 import com.droiddevgeeks.railjourney.utils.APIUrls;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import static android.view.View.GONE;
